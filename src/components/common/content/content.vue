@@ -1,6 +1,9 @@
 <!--  -->
 <template>
-  <div>login</div>
+  <div>
+        content
+        <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -9,7 +12,9 @@ export default {
         return {
         };
     },
-
+    created() {
+        console.log('111111111111')
+    },
     components: {},
 
     computed: {},

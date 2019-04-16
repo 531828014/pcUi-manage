@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>login</div>
+  <div>403</div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
     components: {},
 
     computed: {},
-
     methods: {}
 }
 

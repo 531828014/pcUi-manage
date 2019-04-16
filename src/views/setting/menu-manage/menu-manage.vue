@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-  <div>login</div>
+  <div>
+      menu
+  </div>
 </template>
 
 <script>

@@ -1,6 +1,13 @@
 <!--  -->
 <template>
-  <div>login</div>
+    <div>
+        home
+        <div class="content">
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
+    </div>
 </template>
 
 <script>
