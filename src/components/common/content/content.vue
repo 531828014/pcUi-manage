@@ -12,14 +12,19 @@
                     :index="`${index}`">
                     <template slot="title">
                         <i :class="item.icon"></i>
-                        <span>{{item.title}}</span>
+                        <a :href="item.path">
+                            <span>{{item.title}}</span>
+                        </a>
                     </template>
-                    <el-menu-item
+                    <div 
                         v-for="(it,itIndex) in item.children" 
-                        :key="itIndex"
-                        :index="`${index}-${itIndex}`">
-                        {{it.title}}
-                    </el-menu-item>
+                        :key="itIndex">
+                        <a :href="item.path">
+                            <el-menu-item :index="`${index}-${itIndex}`">
+                                {{it.title}}
+                            </el-menu-item>
+                        </a>   
+                    </div>
                 </el-submenu>
             </el-menu>
         </div>
@@ -30,24 +35,7 @@
 </template>
 
 <script>
-const menuList = [
-    {
-        title: '商品管理',
-        icon: 'el-icon-goods',
-        children: [
-            {title: '新增商品'},
-            {title: '商品列表'}
-        ]
-    },
-    {
-        title: '订单管理',
-        icon: 'el-icon-tickets',
-        children: [
-            {title: '订单列表'},
-            {title: '设计师订单'}
-        ]
-    }
-]
+import menuList from 'router/menu'
 export default {
     data() {
         return {

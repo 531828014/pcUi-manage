@@ -21,8 +21,12 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: fs.readFileSync('src/sass/variables.scss', 'utf-8')
-            }
+                import: [
+                    path.join(__dirname, 'src/stylus/variable.scss'),
+                    path.join(__dirname, 'src/stylus/mixin/index.scss')
+                ]
+                // data: fs.readFileSync('src/sass/variables.scss', 'utf-8')
+            },
         }
     },
     chainWebpack: config => {
@@ -34,7 +38,7 @@ module.exports = {
             .set('components', resolve('src/components'))
             .set('router', resolve('src/router'))
             .set('store', resolve('src/store'))
-            .set('stylus', resolve('src/sass'))
+            .set('sass', resolve('src/sass'))
             .set('views', resolve('src/views'))
             .set('assets', resolve('src/assets'))
     }
