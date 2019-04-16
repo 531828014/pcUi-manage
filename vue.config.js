@@ -1,5 +1,5 @@
 const path = require('path');
-
+const fs = require('fs');
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
@@ -20,11 +20,8 @@ module.exports = {
     },
     css: {
         loaderOptions: {
-            stylus: {
-                import: [
-                    path.join(__dirname, 'src/stylus/variable.styl'),
-                    path.join(__dirname, 'src/stylus/mixin/index.styl')
-                ]
+            sass: {
+                data: fs.readFileSync('src/sass/variables.scss', 'utf-8')
             }
         }
     },
