@@ -17,6 +17,7 @@
                         </router-link>
                     </template>
                     <div 
+                        class="listItem"
                         v-for="(it,itIndex) in item.children" 
                         :key="itIndex">
                         <router-link :to="it.path">
@@ -61,6 +62,9 @@ export default {
 .leftMenu {
     width: 200px;
     float: left;
+    .listItem {
+        padding-left: 10px;
+    }
 }
 .rightContent{
     margin-left: 210px;
