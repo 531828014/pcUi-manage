@@ -12,18 +12,18 @@
                     :index="`${index}`">
                     <template slot="title">
                         <i :class="item.icon"></i>
-                        <a :href="item.path">
+                        <router-link :to="item.path">
                             <span>{{item.title}}</span>
-                        </a>
+                        </router-link>
                     </template>
                     <div 
                         v-for="(it,itIndex) in item.children" 
                         :key="itIndex">
-                        <a :href="item.path">
+                        <router-link :to="it.path">
                             <el-menu-item :index="`${index}-${itIndex}`">
                                 {{it.title}}
                             </el-menu-item>
-                        </a>   
+                        </router-link>
                     </div>
                 </el-submenu>
             </el-menu>

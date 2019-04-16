@@ -1,8 +1,8 @@
 <!--  -->
 <template>
-  <div>
-      menu
-  </div>
+    <div>
+        manage
+    </div>
 </template>
 
 <script>

@@ -35,23 +35,41 @@ export default [
                 component: () => import('views/abnormal-page/403/403'),
             },
             {
-                path: '/home/system',
-                name: '系统设置',
+                path: '/home/goods',
+                name: '商品管理',
                 component: Content,
-                redirect: '/home/system/dept-manage',
+                redirect: '/home/goods/manage',
                 children: [
                     {
-                        path: '/home/system/menu-manage',
-                        name: '菜单权限管理',
-                        component: () => import('views/setting/menu-manage/menu-manage')
+                        path: '/home/goods/new',
+                        name: '新增商品',
+                        component: () => import('views/goods/new/new')
                     },
                     {
-                        path: '/home/system/dept-manage',
-                        name: '部门管理',
-                        component: () => import('views/setting/dept-manage/dept-manage')
+                        path: '/home/goods/manage',
+                        name: '商品列表',
+                        component: () => import('views/goods/manage/manage')
                     }
                 ]
-            }
+            },
+            {
+                path: '/home/order',
+                name: '订单管理',
+                component: Content,
+                redirect: '/home/order/list',
+                children: [
+                    {
+                        path: '/home/order/desList',
+                        name: '设计师订单',
+                        component: () => import('views/order/desList/desList')
+                    },
+                    {
+                        path: '/home/order/list',
+                        name: '订单列表',
+                        component: () => import('views/order/list/list')
+                    }
+                ]
+            },
         ]
     }
 ]
