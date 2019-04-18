@@ -23,7 +23,7 @@ export default {
     computed: {
         setRoutelist() {
             let ret = [...this.$route.matched]
-            if(ret[0].name == '公房管理系统') {
+            if(ret[0].name == 'XXX管理系统') {
                 ret.splice(0, 1)
             }
             return ret

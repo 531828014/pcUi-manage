@@ -20,7 +20,7 @@ const Content = (resolve) => {
 export default [
     {
         path: '/home',
-        name: '公房管理系统',
+        name: 'XXX管理系统',
         component: Home,
         redirect: '/home/my',
         children: [

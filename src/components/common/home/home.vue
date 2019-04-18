@@ -4,7 +4,7 @@
         <div class="main">
             <div class="logo-wrap">
                 <img class="logo" src="./image/logo.png">
-                <span class="title">公房管理系统</span>
+                <span class="title">XXX管理系统</span>
                 <span 
                     class="title menu"
                     v-for="(item, index) in menuList"

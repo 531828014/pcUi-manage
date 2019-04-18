@@ -1,6 +1,6 @@
 <template>
     <div class="copyright">
-        Copyright <span v-html="copy"></span> {{year}} 广西有作为科技有限公司
+        Copyright <span v-html="copy"></span> {{year}} 礼锦
     </div>
 </template>
 <script>
