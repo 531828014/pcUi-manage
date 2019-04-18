@@ -1,4 +1,4 @@
-# pc-manage
+# common-ui
 
 ## Project setup
 ```

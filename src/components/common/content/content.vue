@@ -1,72 +1,117 @@
 <!--  -->
 <template>
-    <div>
-        <div class="leftMenu">
-            <el-menu
-                class="el-menu-vertical-demo"
-                @open="handleOpen"
-                @close="handleClose">
-                <el-submenu 
-                    v-for="(item,index) in menuList"
-                    :key="index"
-                    :index="`${index}`">
-                    <template slot="title">
-                        <i :class="item.icon"></i>
-                        <router-link :to="item.path">
+    <div class="content">
+            <div class="menuLeft">
+                <a-button 
+                    class="btn-menu"
+                    @click="toggleCollapsed">
+                <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
+                </a-button>
+                <a-menu
+                    mode="inline"
+                    theme="light"
+                    :inlineCollapsed="collapsed"
+                    @click="handleClick"
+                    >
+                    <template v-for="(item, index) in setTitle">
+                        <a-menu-item v-if="!item.children" :key="index">
+                            <router-link :to="item.path">
+                            <a-icon :type="item.icon" />
                             <span>{{item.title}}</span>
-                        </router-link>
+                            </router-link>
+                        </a-menu-item>
+                        <sub-menu v-else :menu-info="item" :mainKey="index" :key="index"/>
                     </template>
-                    <div 
-                        class="listItem"
-                        v-for="(it,itIndex) in item.children" 
-                        :key="itIndex">
-                        <router-link :to="it.path">
-                            <el-menu-item :index="`${index}-${itIndex}`">
-                                {{it.title}}
-                            </el-menu-item>
-                        </router-link>
-                    </div>
-                </el-submenu>
-            </el-menu>
-        </div>
-        <div class="rightContent">
-            <router-view></router-view>
-        </div>
+                </a-menu>
+            </div>
+            <div class="contentRight">
+                <div class="clear"></div>
+                <a-card class="card">
+                    <span slot="title">
+                        <bread-crumb></bread-crumb>
+                    </span>
+                    <router-view></router-view>
+                </a-card>
+                <copyright></copyright>
+            </div>
     </div>
 </template>
 
 <script>
-import menuList from 'router/menu'
+import SubMenu from 'components/common/content/subMenu'
+import BreadCrumb from 'components/common/breadCrumb/breadCrumb'
+import menu from 'router/menu'
+import MenuList from 'router/menuTitle'
+import Copyright from 'components/common/copyright/copyright'
 export default {
     data() {
         return {
-            menuList: menuList
+            menuList: MenuList,
+            collapsed: false,
         };
     },
-    components: {},
+    components: {
+        BreadCrumb,
+        SubMenu,
+        Copyright
+    },
 
-    computed: {},
+    computed: {
+        setTitle() {
+            let number = this.$store.state.menuIndex
+            return this.menuList[number].children
+        }
+    },
 
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+        handleClick(e) {
+            // console.log('click', e)
         },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    }
+        titleClick(e) {
+            // console.log('titleClick', e)
+        },
+        toggleCollapsed() {
+            this.collapsed = !this.collapsed
+        },
+    },
 }
 
 </script>
 <style lang='scss' scoped>
-.leftMenu {
-    width: 200px;
-    float: left;
-    .listItem {
-        padding-left: 10px;
+@import 'sass/index.scss';
+.content {
+    .menuLeft{
+        float: left;
+        font-size: $con-font-size-base;
+        border-right: 1px solid $con-border-color;
+        height: 100%;
+        max-width: 200px;
+        .btn-menu{
+            padding: 0 8px;
+            float: left;
+            position: relative;
+            left: 30%;
+            clear: both;
+            margin-top: 5px;
+        }
+        /deep/ .ant-menu-submenu-title .anticon + span{
+            margin-right: 30px;
+        }
+        /deep/ .ant-menu-sub.ant-menu-inline > .ant-menu-item{
+            font-size: $con-font-size-nm;
+        }
     }
-}
-.rightContent{
-    margin-left: 210px;
+    .contentRight{
+        display: grid;
+        padding: 0 20px;
+        .card {
+            /deep/ .ant-card-body {
+                padding: 20px 0 !important;
+            }
+            /deep/ .ant-card-head {
+                padding: 0 !important;
+            }
+        }
+    }
 }
 </style>

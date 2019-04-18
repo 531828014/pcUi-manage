@@ -1,31 +1,77 @@
-export default [
+export let personal = [ //个人业务
     {
-        title: '商品管理',
-        path: '/home/goods',
-        icon: 'el-icon-goods',
+        title: '首页',
+        path: '/home',
+        icon: 'home',
+    },
+    {
+        title: '系统设置',
+        path: '/home/system',
+        icon: 'appstore',
         children: [
             {
-                title: '新增商品',
-                path: '/home/goods/new',
+                title: '菜单权限管理',
+                path: '/home/system/menu-manage',
             },
             {
-                title: '商品列表',
-                path: '/home/goods/manage'
+                title: '部门管理',
+                path: '/home/system/dept-manage'
+            },
+            {
+                title: '人员管理',
+                path: '/home/system/personnel-manage'
+            },
+            {
+                path: '/home/system/system-parameter',
+                title: '系统参数设置',
             }
         ]
     },
     {
-        title: '订单管理',
-        path: '/home/order',
-        icon: 'el-icon-tickets',
+        title: 'XXX管理',
+        path: '/home/system',
+        icon: 'mail',
         children: [
             {
-                title: '订单列表',
-                path: '/home/order/list',
+                title: 'XXX列表',
+                path: '/home/system/menu-manage',
             },
             {
-                title: '设计师订单',
-                path: '/home/order/desList'
+                title: 'XXXXX',
+                path: '/home/system/dept-manage'
+            }
+        ]
+    }
+]
+
+export let sponsor = [ //主办业务
+    {
+        title: 'XXX设置',
+        path: '/home/system',
+        icon: 'mail',
+        children: [
+            {
+                title: 'XXXXX管理',
+                path: '/home/system/menu-manage',
+            },
+            {
+                title: 'XXX管理',
+                path: '/home/system/dept-manage'
+            }
+        ]
+    },
+    {
+        title: 'XXX管理',
+        path: '/home/system',
+        icon: 'appstore',
+        children: [
+            {
+                title: 'XXX列表',
+                path: '/home/system/menu-manage',
+            },
+            {
+                title: 'XXXXX',
+                path: '/home/system/dept-manage'
             }
         ]
     }
