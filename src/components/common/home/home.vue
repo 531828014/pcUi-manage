@@ -2,10 +2,8 @@
 <template>
     <div class="homeMenu">
         <el-menu
-            :default-active="activeIndex"
             class="el-menu-demo"
             mode="horizontal"
-            @select="handleSelect"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b">
@@ -28,7 +26,7 @@
 </template>
 
 <script>
-import MenuList from 'router/menuTitle'
+import MenuList from 'router/menu'
 export default {
     data() {
         return {

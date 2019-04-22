@@ -1,4 +1,4 @@
-export let personal = [ //个人业务
+export default [ //个人业务
     {
         title: '首页',
         path: '/home',
@@ -20,9 +20,9 @@ export let personal = [ //个人业务
         ]
     },
     {
-        title: 'XXX管理',
+        title: '订单管理',
         path: '/home/system',
-        icon: 'appstore',
+        icon: 'el-icon-document',
         children: [
             {
                 title: 'XXX列表',

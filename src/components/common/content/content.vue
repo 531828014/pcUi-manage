@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import MenuList from 'router/menuTitle'
+import MenuList from 'router/menu'
 export default {
     data() {
         return {
@@ -65,10 +65,10 @@ export default {
     },
 
     methods: {
-        handleClick(e) {
+        handleOpen(e) {
             // console.log('click', e)
         },
-        titleClick(e) {
+        handleClose(e) {
             // console.log('titleClick', e)
         },
         toggleCollapsed() {
