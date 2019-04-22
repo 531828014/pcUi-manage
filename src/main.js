@@ -1,17 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from 'router/index';
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import store from 'store/index';
 import 'api/setting/index'
 import 'sass/index.scss'
-import moment from 'moment';
-import 'moment/locale/zh-cn';
 
-moment.locale('zh-cn');
 Vue.config.productionTip = false
-Vue.use(Antd)
+Vue.use(ElementUI)
 
 new Vue({
     router,
