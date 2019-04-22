@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {getUserInfo} from 'utils/storage'
 import {forceToLogin, requestError} from './err-handle'
-import { Modal, message } from 'ant-design-vue'
+import {MessageBox, Message} from 'element-ui'
 
 axios.defaults.baseURL = window.GlobalConfig.baseUrl
 // 设置请求拦截器
@@ -28,14 +28,14 @@ axios.interceptors.response.use(res => {
             let submitData = JSON.parse(res.config.data)
             if (res.data.Result) {
                 if (res.data.Msg && !submitData.nomessage && !res.config.nomessage) {
-                    message.success(`${res.data.Msg}`)
+                    Message({type: 'success', message: res.data.Msg})
                 }
                 return Promise.resolve(res.data)
             } else if (res.data.ForceToLogin) {
                 forceToLogin(res.data)
             } else {
                 if (res.data.Msg && !submitData.nomessage && !res.config.nomessage) {
-                    Modal.info({title: '提示', okText: '确定'})
+                    MessageBox.alert(res.data.Msg, '提示', { confirmButtonText: '确定', type: 'error' })
                 }
                 return Promise.resolve(res.data)
             }
@@ -44,9 +44,9 @@ axios.interceptors.response.use(res => {
                 forceToLogin(res.data)
             } else {
                 if (res.data.Result === true && res.data.Msg && !res.config.params.nomessage && !res.config.nomessage) {
-                    message.success(`${res.data.Msg}`)
+                    Message({type: 'success', message: res.data.Msg})
                 } else if (res.data.Result === false && res.data.Msg && !res.config.params.nomessage && !res.config.nomessage) {
-                    message.error(`${res.data.Msg}`)
+                    Message({type: 'error', message: res.data.Msg})
                 }
                 return Promise.resolve(res.data)
             }
@@ -60,3 +60,4 @@ axios.interceptors.response.use(res => {
     requestError(err)
     return Promise.reject(err)
 })
+
