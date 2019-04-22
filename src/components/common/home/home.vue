@@ -28,10 +28,12 @@
 </template>
 
 <script>
+import MenuList from 'router/menuTitle'
 export default {
     data() {
         return {
-            activeIndex: '1'
+            current: ['user'],
+            menuList: MenuList,
         };
     },
 
@@ -40,8 +42,8 @@ export default {
     computed: {},
 
     methods: {
-        handleSelect(key, keyPath) {
-            console.log(key, keyPath);
+        menuCheck(item, index) {
+            this.$store.commit('setMenuIndex', index)
         }
     }
 }
@@ -54,13 +56,18 @@ export default {
     .fade-leave-active {
         transition: opacity .3s;
     }
-
-    .fade-enter,
-    .fade-leave-active {
-        opacity: 0
+    .headtitle {
+        color: white;
     }
-    /deep/ .el-menu--horizontal>.el-menu-item,.el-menu--horizontal>.el-submenu {
-        float: right !important;
+    /deep/ .ant-menu-horizontal {
+        line-height: 60px;
+        background-color: $color-theme-primary;
+    }
+    /deep/ .ant-menu-submenu-title{
+        font-size: $con-font-size-base;
+    }
+    /deep/ .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+        float: right;
     }
     .logo-wrap{
         float: left;
@@ -84,5 +91,4 @@ export default {
         }
     }
 }
-
 </style>

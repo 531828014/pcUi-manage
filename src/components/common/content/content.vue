@@ -48,25 +48,33 @@
 </template>
 
 <script>
-import menuList from 'router/menu'
+import MenuList from 'router/menuTitle'
 export default {
     data() {
         return {
-            menuList: menuList
+            menuList: MenuList,
+            collapsed: false,
         };
     },
-    components: {},
 
-    computed: {},
+    computed: {
+        setTitle() {
+            let number = this.$store.state.menuIndex
+            return this.menuList[number].children
+        }
+    },
 
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+        handleClick(e) {
+            // console.log('click', e)
         },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    }
+        titleClick(e) {
+            // console.log('titleClick', e)
+        },
+        toggleCollapsed() {
+            this.collapsed = !this.collapsed
+        },
+    },
 }
 
 </script>
@@ -84,8 +92,5 @@ export default {
             border-right: 1px solid $con-border-color;
         }
     }
-}
-.rightContent{
-    margin-left: 210px;
 }
 </style>

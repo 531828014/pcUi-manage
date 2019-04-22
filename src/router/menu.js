@@ -1,4 +1,4 @@
-export default [
+export let personal = [ //个人业务
     {
         title: '首页',
         path: '/home',
@@ -10,27 +10,27 @@ export default [
         icon: 'el-icon-goods',
         children: [
             {
-                title: '新增商品',
-                path: '/home/goods/new',
+                title: 'XXXXX管理',
+                path: '/home/system/menu-manage',
             },
             {
-                title: '商品列表',
-                path: '/home/goods/manage'
+                title: 'XXX管理',
+                path: '/home/system/dept-manage'
             }
         ]
     },
     {
-        title: '订单管理',
-        path: '/home/order',
-        icon: 'el-icon-tickets',
+        title: 'XXX管理',
+        path: '/home/system',
+        icon: 'appstore',
         children: [
             {
-                title: '订单列表',
-                path: '/home/order/list',
+                title: 'XXX列表',
+                path: '/home/system/menu-manage',
             },
             {
-                title: '设计师订单',
-                path: '/home/order/desList'
+                title: 'XXXXX',
+                path: '/home/system/dept-manage'
             }
         ]
     },

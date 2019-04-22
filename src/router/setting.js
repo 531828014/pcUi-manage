@@ -20,9 +20,9 @@ const Content = (resolve) => {
 export default [
     {
         path: '/home',
-        name: '后台管理系统',
+        name: 'XXX管理系统',
         component: Home,
-        redirect: '/home/goods',
+        redirect: '/home/my',
         children: [
             {
                 path: '/404',
@@ -35,41 +35,46 @@ export default [
                 component: () => import('views/abnormal-page/403/403'),
             },
             {
-                path: '/home/goods',
-                name: '商品管理',
+                path: '/home/my',
+                name: '首页',
                 component: Content,
-                redirect: '/home/goods/manage',
+                redirect: '/home/my/index',
                 children: [
                     {
-                        path: '/home/goods/new',
-                        name: '新增商品',
-                        component: () => import('views/goods/new/new')
+                        path: '/home/my/index',
+                        name: '',
+                        component: () => import('views/home/home')
                     },
-                    {
-                        path: '/home/goods/manage',
-                        name: '商品列表',
-                        component: () => import('views/goods/manage/manage')
-                    }
                 ]
             },
             {
-                path: '/home/order',
-                name: '订单管理',
+                path: '/home/system',
+                name: '系统设置',
                 component: Content,
-                redirect: '/home/order/list',
+                redirect: '/home/system/dept-manage',
                 children: [
                     {
-                        path: '/home/order/desList',
-                        name: '设计师订单',
-                        component: () => import('views/order/desList/desList')
+                        path: '/home/system/menu-manage',
+                        name: '菜单权限管理',
+                        component: () => import('views/setting/menu-manage/menu-manage')
                     },
                     {
-                        path: '/home/order/list',
-                        name: '订单列表',
-                        component: () => import('views/order/list/list')
+                        path: '/home/system/dept-manage',
+                        name: '部门管理',
+                        component: () => import('views/setting/dept-manage/dept-manage')
+                    },
+                    {
+                        path: '/home/system/personnel-manage',
+                        name: '人员管理',
+                        component: () => import('views/setting/personnel-manage/personnel-manage')
+                    },
+                    {
+                        path: '/home/system/system-parameter',
+                        name: '系统参数设置',
+                        component: () => import('views/setting/system-parameter/system-parameter')
                     }
                 ]
-            },
+            }
         ]
     }
 ]
