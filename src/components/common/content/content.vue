@@ -76,8 +76,13 @@ export default {
     width: 200px;
     float: left;
     font-size: $con-font-size-nm;
-    /deep/ .el-submenu__title{
-        font-size: $con-font-size-base;
+    /deep/ {
+        .el-submenu__title{
+            font-size: $con-font-size-base;
+        }
+        .el-menu{
+            border-right: 1px solid $con-border-color;
+        }
     }
 }
 .rightContent{
