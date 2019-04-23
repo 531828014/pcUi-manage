@@ -14,15 +14,15 @@
         <div class="right">
             <slot name="right">
                 <slot name="actbar">
-                    <!-- <action-bar
+                    <mms-action-bar
                         :fast-search-active="fastSearchActive"
                         :fast-search-data="fastSearchData"
                         :fast-search-value="fastSearchValue"
                         :conditionm-string="conditionString"
                         :search-code="searchCode"
                         @fastSearch="fastSearch"
-                        @search="search"> -->
-                        <!-- <template slot="actbar-left">
+                        @search="search">
+                        <template slot="actbar-left">
                             <slot name="actbar-left"></slot>
                         </template>
                         <template slot="actbar-right">
@@ -31,10 +31,10 @@
                         <template slot="actbar-right-prepend">
                             <slot name="actbar-right-prepend"></slot>
                         </template>
-                        <template slot="actbar-right-append"> -->
-                            <!-- <slot name="actbar-right-append"></slot>
-                        </template> -->
-                    <!-- </action-bar> -->
+                        <template slot="actbar-right-append">
+                            <slot name="actbar-right-append"></slot>
+                        </template>
+                    </mms-action-bar>
                 </slot>
                 <slot name="content">
                 </slot>
@@ -46,7 +46,6 @@
 </template>
 
 <script>
-// import ActionBar from 'layout/action-bar/index'
 export default {
     name: 'table-page-layout',
     props: {
