@@ -22,7 +22,7 @@
                         :search-code="searchCode"
                         @fastSearch="fastSearch"
                         @search="search"> -->
-                        <template slot="actbar-left">
+                        <!-- <template slot="actbar-left">
                             <slot name="actbar-left"></slot>
                         </template>
                         <template slot="actbar-right">
@@ -31,16 +31,14 @@
                         <template slot="actbar-right-prepend">
                             <slot name="actbar-right-prepend"></slot>
                         </template>
-                        <template slot="actbar-right-append">
-                            <slot name="actbar-right-append"></slot>
-                        </template>
+                        <template slot="actbar-right-append"> -->
+                            <!-- <slot name="actbar-right-append"></slot>
+                        </template> -->
                     <!-- </action-bar> -->
                 </slot>
                 <slot name="content">
-                    content
                 </slot>
                 <slot name="bottom">
-                    bottom
                 </slot>
             </slot>
         </div>
@@ -130,24 +128,11 @@ export default {
                 padding: 10px;
             }
         }
-        & >>> .left-list{
-            background: #fff;
-            list-style: none;
-            text-align: center;
-            padding: 5px 8px;
-            font-size: $con-font-size-nm;
-            .item{
-                cursor: pointer;
-                margin-bottom: $con-spacing-row-sm;
-                &.active{
-                    color: $color-theme-primary;
-                }
-            }
-        }
     }
     .right{
         box-sizing: border-box;
         overflow: auto;
+        margin-right: 10px;
     }
     & >>> .el-card{
         margin-bottom: $con-spacing-row-base;

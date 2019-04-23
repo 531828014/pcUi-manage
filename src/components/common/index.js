@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Table from './table/index'
+import Form from './form/index'
 const components = [
-    Table
+    Table,
+    Form
 ]
 
 components.forEach(item => {

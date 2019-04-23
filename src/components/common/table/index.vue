@@ -1,7 +1,7 @@
 <!--  -->
 <template>
     <el-table
-        class="phms-table"
+        class="mms-table"
         ref="table"
         :data="data"
         :height="height"
@@ -95,7 +95,7 @@
 </template>
 <script>
 export default {
-    name: 'phms-table',
+    name: 'mms-table',
     props: {
         data: {
             type: Array,
@@ -302,7 +302,7 @@ export default {
 
 </script>
 <style lang='scss' scoped>
-.phms-table{
+.mms-table{
     & >>> .el-form-item{
         margin-bottom: 0;
     }

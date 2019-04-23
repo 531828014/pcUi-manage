@@ -15,12 +15,12 @@
                     :rules="model.rules"
                     status-icon
                     ref="form">
-                    <phms-table
+                    <mms-table
                         ref="table"
                         expand
                         :data="model.data"
                         :columns="columns"
-                        :header-cell-class-name="headerClaaName"></phms-table>
+                        :header-cell-class-name="headerClaaName"></mms-table>
                 </el-form>
             </el-card>
             <template slot="bottom">

@@ -84,6 +84,7 @@ export default {
     width: 200px;
     float: left;
     font-size: $con-font-size-nm;
+    padding: 0 $con-spacing-row-sm;
     /deep/ {
         .el-submenu__title{
             font-size: $con-font-size-base;

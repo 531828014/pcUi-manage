@@ -11,7 +11,7 @@
                 <img class="logo" src="./image/logo.png">
                 <span class="title">XXXX管理平台</span>
             </div>
-            <el-submenu index="2">
+            <el-submenu class="menulist" index="2">
                 <template slot="title">用户名</template>
                 <el-menu-item index="2-1">退出登录</el-menu-item>
                 <el-menu-item index="2-2">修改密码</el-menu-item>
@@ -57,15 +57,14 @@ export default {
     .headtitle {
         color: white;
     }
-    /deep/ .ant-menu-horizontal {
-        line-height: 60px;
-        background-color: $color-theme-primary;
-    }
-    /deep/ .ant-menu-submenu-title{
-        font-size: $con-font-size-base;
-    }
-    /deep/ .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
-        float: right;
+    /deep/ {
+        .ant-menu-horizontal {
+            line-height: 60px;
+            background-color: $color-theme-primary;
+        }
+        .ant-menu-submenu-title{
+            font-size: $con-font-size-base;
+        }
     }
     .logo-wrap{
         float: left;
@@ -87,6 +86,9 @@ export default {
             font-size: 24px;
             color: #fff;
         }
+    }
+    .menulist{
+        float: right;
     }
 }
 </style>

@@ -15,7 +15,7 @@
                     :rules="model.rules"
                     status-icon
                     ref="form">
-                    <phms-table
+                    <mms-table
                         ref="table"
                         expand
                         :data="model.data"
@@ -35,12 +35,18 @@
                         <template slot="operation" slot-scope="{scope}">
                             <el-button @click="edit(scope.row)" type="primary">编辑</el-button>
                         </template>    
-                    </phms-table>
+                    </mms-table>
                 </el-form>
             </el-card>
-            <template slot="bottom">
-                bottombottom
-            </template>
+            <el-card slot="content">
+                <mms-form-info :form-data="currentApply" :items="applyInfos">
+                </mms-form-info>
+            </el-card>
+            <el-card slot="content">
+                <el-form :model="form">
+                    <mms-form :items="items" :form-data="form"></mms-form>
+                </el-form>
+            </el-card>
         </table-page-layout>
         <pagination-layout mode='center'>
         </pagination-layout>
@@ -73,14 +79,70 @@ const columns = [
         fixed: 'right'
     }
 ]
+const applyInfos = [
+    {
+        label: '编号',
+        prop: 'number',
+        span: 12
+    },
+    {
+        label: '标题',
+        prop: 'title',
+        span: 12
+    },
+    {
+        label: '状态',
+        prop: 'statusName',
+        span: 12
+    },
+]
 export default {
     data() {
         return {
             list: [],
+            currentApply: {},
             columns: columns,
+            applyInfos: applyInfos,
             formRules: {
                 title: [{ required: true, message: '请输入标题', trigger: 'blur'}],
             },
+            form: {
+                title: '',
+                number: '编号',
+                money: 666,
+                name: 'sdakdjh'
+            },
+            items: [
+                {
+                    label: '编号',
+                    component: 'el-input'
+                },
+                // {
+                //     label: '标题',
+                //     prop: 'title',
+                //     component: 'pms-item-list',
+                //     attrs: {
+                //         code: 'cgfs'
+                //     }
+                // },
+                {
+                    label: '金额',
+                    prop: 'money',
+                    component: 'el-input'
+                },
+                {
+                    label: '名称',
+                    prop: 'name',
+                    component: 'el-select',
+                    attrs: {
+                        placeholder: '请输入名称',
+                        code: 'cgfs'
+                    },
+                    data: {
+                        options: [{label: '选项1', value: '1'}, {label: '选项2', value: '2'}]
+                    }
+                },
+            ],
         };
     },
 
