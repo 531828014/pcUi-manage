@@ -6,7 +6,7 @@ function resolve(dir) {
 }
 module.exports = {
     devServer: {
-        port: 9091,
+        port: 7878,
         open: true,
         proxy: {
             '/proxy': {
@@ -23,8 +23,8 @@ module.exports = {
         loaderOptions: {
             sass: {
                 import: [
-                    path.join(__dirname, 'src/stylus/variable.scss'),
-                    path.join(__dirname, 'src/stylus/mixin/index.scss')
+                    path.join(__dirname, 'src/sass/variables.scss'),
+                    path.join(__dirname, 'src/sass/index.scss')
                 ]
             }
         },
