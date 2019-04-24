@@ -42,7 +42,11 @@
             </el-menu>
         </div>
         <div class="rightContent">
-            <router-view></router-view>
+            <phms-bread-crumb></phms-bread-crumb>
+            <div class="content-top">
+                <router-view></router-view>
+            </div>
+            <copyright></copyright>
         </div>
     </div>
 </template>
@@ -80,17 +84,30 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import 'sass/index.scss';
-.leftMenu {
-    width: 200px;
-    float: left;
-    font-size: $con-font-size-nm;
-    padding: 0 $con-spacing-row-sm;
-    /deep/ {
-        .el-submenu__title{
-            font-size: $con-font-size-base;
+.content{
+    .leftMenu {
+        width: 200px;
+        float: left;
+        font-size: $con-font-size-nm;
+        padding: 0 $con-spacing-row-sm;
+        /deep/ {
+            .el-submenu__title{
+                font-size: $con-font-size-base;
+            }
+            .el-menu{
+                border-right: 1px solid $con-border-color;
+            }
         }
-        .el-menu{
-            border-right: 1px solid $con-border-color;
+    }
+    .rightContent{
+        .content-top{
+            border-top: 1px solid $con-border-color;
+        }
+        /deep/ {
+            .el-date-editor .el-range-input,
+            .el-input__inner{
+                font-size: $con-font-size-nm !important;
+            }
         }
     }
 }

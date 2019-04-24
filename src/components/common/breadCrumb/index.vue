@@ -1,22 +1,45 @@
 <!--  -->
 <template>
-  <div></div>
+    <div class="bread-crumb">
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item
+                v-for="(item, index) in setRoute"
+                :key="index"
+                :to="item.path">
+                {{item.name}}
+            </el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
 </template>
 
 <script>
 export default {
+    name: 'phms-bread-crumb',
     data() {
         return {
         };
     },
-
-    components: {},
-
-    computed: {},
-
-    methods: {}
+    computed: {
+        setRoute() {
+            let ret = this.$route.matched
+            if(this.$route.matched[0].name == 'XXX管理系统')
+                ret.splice(0, 1)
+            return ret
+        }
+    },
 }
 
 </script>
 <style lang='scss' scoped>
+@import 'sass/index.scss';
+.bread-crumb{
+    font-size: $con-font-size-sm;
+    height: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    /deep/ .el-breadcrumb__inner.is-link {
+        color: $con-text-color;
+        font-weight: normal; 
+    }
+}
 </style>

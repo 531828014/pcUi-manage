@@ -2,13 +2,11 @@
 <template>
     <div>
         <table-page-layout >
-            <template slot="actbar">
                 <el-button type="text" slot="actbar-left">随便玩玩</el-button>
                 <el-button type="text" slot="actbar-right-append" 
         @click="validate">验证表单</el-button>
                 <el-button type="text" slot="actbar-right-prepend" 
         @click="changeColumn">动态改变表格</el-button>
-            </template>
             <el-card slot="content" shadow="never">
                 <el-form
                     :model="model"
