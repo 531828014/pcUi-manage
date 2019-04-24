@@ -94,7 +94,7 @@ export default {
             .el-submenu__title{
                 font-size: $con-font-size-base;
             }
-            .el-menu{
+            .el-menu-vertical-demo{
                 border-right: 1px solid $con-border-color;
             }
         }

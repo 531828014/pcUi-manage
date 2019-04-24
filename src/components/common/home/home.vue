@@ -54,9 +54,6 @@ export default {
     .fade-leave-active {
         transition: opacity .3s;
     }
-    .headtitle {
-        color: white;
-    }
     /deep/ {
         .ant-menu-horizontal {
             line-height: 60px;
@@ -86,9 +83,18 @@ export default {
             font-size: 24px;
             color: #fff;
         }
+        .titleItem{
+            font-size: $con-font-size-lg;
+        }
     }
     .menulist{
         float: right;
+        /deep/ .el-submenu__title{
+            color: #fff;
+        }
+        & :hover{
+            background-color: $color-theme-primary;
+        }
     }
 }
 </style>

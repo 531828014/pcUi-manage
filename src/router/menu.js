@@ -10,72 +10,64 @@ export default [ //个人业务
         icon: 'el-icon-goods',
         children: [
             {
-                title: 'XXXXX管理',
-                path: '/home/system/menu-manage',
+                path: '/home/goods/goods-list',
+                title: '商品列表',
             },
             {
-                title: 'XXX管理',
-                path: '/home/system/dept-manage'
+                path: '/home/goods/goods-add',
+                title: '新增商品',
+            },
+            {
+                path: '/home/goods/goods-stock',
+                title: '商品库存',
             }
         ]
     },
     {
         title: '订单管理',
-        path: '/home/system',
+        path: '/home/order',
         icon: 'el-icon-document',
         children: [
             {
-                title: 'XXX列表',
-                path: '/home/system/menu-manage',
+                path: '/home/order/order-list',
+                title: '自营订单',
             },
             {
-                title: 'XXXXX',
-                path: '/home/system/dept-manage'
+                path: '/home/order/order-des',
+                title: '设计师订单',
             }
         ]
     },
     {
         title: '售后管理',
-        path: '/home/order',
+        path: '/home/after-sale',
         icon: 'el-icon-service',
         children: [
             {
-                title: '订单列表',
-                path: '/home/order/list',
-            },
-            {
-                title: '设计师订单',
-                path: '/home/order/desList'
+                path: '/home/after-sale/after-sale-list',
+                title: '售后订单',
             }
         ]
     },
     {
         title: '用户管理',
-        path: '/home/order',
+        path: '/home/user',
         icon: 'el-icon-view',
         children: [
             {
-                title: '订单列表',
-                path: '/home/order/list',
-            },
-            {
-                title: '设计师订单',
-                path: '/home/order/desList'
+                path: '/home/user/user-list',
+                title: '售后订单',
             }
         ]
     },
     {
         title: '数据分析',
-        path: '/home/order',
+        path: '/home/data',
         icon: 'el-icon-date',
         children: [
             {
-                title: '订单列表',
-                path: '/home/order/list',
-            },
-            {
-                title: '设计师订单',
-                path: '/home/order/desList'
+                path: '/home/data/data-list',
+                title: '数据图表',
             }
         ]
     },
