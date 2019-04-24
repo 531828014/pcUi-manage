@@ -1,4 +1,4 @@
-export default [ //个人业务
+export default [ 
     {
         title: '首页',
         path: '/home',
