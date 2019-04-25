@@ -20,9 +20,9 @@ const Content = (resolve) => {
 export default [
     {
         path: '/home',
-        name: '后台管理系统',
+        name: 'XXX管理系统',
         component: Home,
-        redirect: '/home/goods',
+        redirect: '/home/my',
         children: [
             {
                 path: '/404',
@@ -35,41 +35,103 @@ export default [
                 component: () => import('views/abnormal-page/403/403'),
             },
             {
+                path: '/home/my',
+                name: '首页',
+                component: Content,
+                redirect: '/home/my/index',
+                children: [
+                    {
+                        path: '/home/my/index',
+                        name: '',
+                        component: () => import('views/home/home')
+                    },
+                ]
+            },
+            {
                 path: '/home/goods',
                 name: '商品管理',
                 component: Content,
-                redirect: '/home/goods/manage',
+                redirect: '/home/goods/goods-list',
                 children: [
                     {
-                        path: '/home/goods/new',
-                        name: '新增商品',
-                        component: () => import('views/goods/new/new')
+                        path: '/home/goods/goods-list',
+                        name: '商品列表',
+                        component: () => import('views/goods/goods-list/index')
                     },
                     {
-                        path: '/home/goods/manage',
-                        name: '商品列表',
-                        component: () => import('views/goods/manage/manage')
-                    }
+                        path: '/home/goods/goods-add',
+                        name: '新增商品',
+                        component: () => import('views/goods/goods-add/index')
+                    },
+                    {
+                        path: '/home/goods/goods-stock',
+                        name: '商品库存',
+                        component: () => import('views/goods/goods-stock/index')
+                    },
+                    {
+                        path: '/home/goods/goods-category',
+                        name: '商品品类',
+                        component: () => import('views/goods/goods-category/index')
+                    },
                 ]
             },
             {
                 path: '/home/order',
                 name: '订单管理',
                 component: Content,
-                redirect: '/home/order/list',
+                redirect: '/home/order/order-list',
                 children: [
                     {
-                        path: '/home/order/desList',
-                        name: '设计师订单',
-                        component: () => import('views/order/desList/desList')
+                        path: '/home/order/order-list',
+                        name: '自营订单',
+                        component: () => import('views/order/order-list/index')
                     },
                     {
-                        path: '/home/order/list',
-                        name: '订单列表',
-                        component: () => import('views/order/list/list')
+                        path: '/home/order/order-des',
+                        name: '设计师订单',
+                        component: () => import('views/order/order-des/index')
+                    },
+                ]
+            },
+            {
+                path: '/home/after-sale',
+                name: '售后管理',
+                component: Content,
+                redirect: '/home/after-sale/after-sale-list',
+                children: [
+                    {
+                        path: '/home/after-sale/after-sale-list',
+                        name: '售后订单',
+                        component: () => import('views/after-sale/after-sale-list/index')
                     }
                 ]
             },
+            {
+                path: '/home/user',
+                name: '用户管理',
+                component: Content,
+                redirect: '/home/user/user-list',
+                children: [
+                    {
+                        path: '/home/user/user-list',
+                        name: '售后订单',
+                        component: () => import('views/user/user-list/index')
+                    }
+                ]
+            },
+            {
+                path: '/home/data',
+                name: '数据分析',
+                component: Content,
+                redirect: '/home/data/data-list',
+                children: [
+                    {
+                        path: '/home/data/data-list',
+                        name: '数据图表',
+                        component: () => import('views/data/data-list/index')
+                    }
+                ]
+            }
         ]
     }
 ]

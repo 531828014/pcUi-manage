@@ -1,8 +1,6 @@
 <!--  -->
 <template>
-    <div>
-        new
-    </div>
+  <div></div>
 </template>
 
 <script>

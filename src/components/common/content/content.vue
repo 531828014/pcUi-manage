@@ -1,72 +1,128 @@
 <!--  -->
 <template>
     <div>
-        <div class="leftMenu">
+        <div class="leftMenu normal">
             <el-menu
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose">
-                <el-submenu 
+                <div 
                     v-for="(item,index) in menuList"
-                    :key="index"
-                    :index="`${index}`">
-                    <template slot="title">
-                        <i :class="item.icon"></i>
+                    :key="index">
+                    <el-submenu 
+                        v-if="item.children"
+                        :index="`${index}`">
+                        <template slot="title">
+                            <i :class="item.icon"></i>
+                            <router-link :to="item.path">
+                                <span>{{item.title}}</span>
+                            </router-link>
+                        </template>
+                        <div 
+                            class="listItem"
+                            v-for="(it,itIndex) in item.children" 
+                            :key="itIndex">
+                            <router-link :to="it.path">
+                                <el-menu-item :index="`${index}-${itIndex}`">
+                                    {{it.title}}
+                                </el-menu-item>
+                            </router-link>
+                        </div>
+                    </el-submenu>
+                    <div v-else>
                         <router-link :to="item.path">
-                            <span>{{item.title}}</span>
-                        </router-link>
-                    </template>
-                    <div 
-                        class="listItem"
-                        v-for="(it,itIndex) in item.children" 
-                        :key="itIndex">
-                        <router-link :to="it.path">
-                            <el-menu-item :index="`${index}-${itIndex}`">
-                                {{it.title}}
+                            <el-menu-item :index="`${index}`" class="title">
+                                <i :class="item.icon"></i>
+                                {{item.title}}
                             </el-menu-item>
                         </router-link>
                     </div>
-                </el-submenu>
+                </div>
+                
             </el-menu>
         </div>
         <div class="rightContent">
-            <router-view></router-view>
+            <phms-bread-crumb></phms-bread-crumb>
+            <div class="content-top">
+                <router-view></router-view>
+            </div>
+            <copyright></copyright>
         </div>
     </div>
 </template>
 
 <script>
-import menuList from 'router/menu'
+import MenuList from 'router/menu'
 export default {
     data() {
         return {
-            menuList: menuList
+            menuList: MenuList,
+            collapsed: false,
         };
     },
-    components: {},
 
-    computed: {},
+    computed: {
+        setTitle() {
+            let number = this.$store.state.menuIndex
+            return this.menuList[number].children
+        }
+    },
 
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+        handleOpen(e) {
+            // console.log('click', e)
         },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    }
+        handleClose(e) {
+            // console.log('titleClick', e)
+        },
+        toggleCollapsed() {
+            this.collapsed = !this.collapsed
+        },
+    },
 }
 
 </script>
 <style lang='scss' scoped>
-.leftMenu {
-    width: 200px;
-    float: left;
-    .listItem {
-        padding-left: 10px;
+@import 'sass/index.scss';
+.content{
+    .leftMenu {
+        width: 200px;
+        float: left;
+        padding: 0 $con-spacing-row-sm 0 0;
+        /deep/ {
+            .el-submenu__title{
+                font-size: $con-font-size-base;
+                height: 45px;
+                line-height: 45px;
+            }
+            .el-menu-vertical-demo{
+                border-right: 1px solid $con-border-color;
+            }
+            .el-menu-item{
+                height: 40px;
+                line-height: 40px;
+            }
+        }
     }
-}
-.rightContent{
-    margin-left: 210px;
+    .rightContent{
+        .content-top{
+            border-top: 1px solid $con-border-color;
+        }
+        /deep/ {
+            .el-date-editor .el-range-input,
+            .el-input__inner{
+                font-size: $con-font-size-nm !important;
+            }
+            .el-table td, .el-table th{
+                padding: 7px 0 !important;
+            }
+            .el-button.is-circle{
+                padding: 7px !important;
+            }
+            .el-button{
+                padding: 7px 15px !important;
+            }
+        }
+    }
 }
 </style>

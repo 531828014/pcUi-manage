@@ -3,11 +3,16 @@ import App from './App.vue'
 import router from 'router/index';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import store from 'store/index';
+import 'api/setting/index'
 import 'sass/index.scss'
-Vue.use(ElementUI);
+import 'components/index.js'
+
 Vue.config.productionTip = false
+Vue.use(ElementUI)
 
 new Vue({
     router,
-    render: h => h(App), 
+    store,
+    render: h => h(App),
 }).$mount('#app')

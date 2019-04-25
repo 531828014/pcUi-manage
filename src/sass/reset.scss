@@ -29,6 +29,7 @@ footer, header, menu, nav, section {
 }
 body {
   line-height: 1;
+  font-size: $con-font-size-base;
 }
 blockquote, q {
   quotes: none;
@@ -42,12 +43,12 @@ table {
   border-spacing: 0;
 }
 a {
-  color: $uni-text-color;  
+  color: $con-text-color;  
   -webkit-backface-visibility: hidden;
   text-decoration: none;
 }
 a:hover {
-    color: $uni-color-primary;
+    color: $con-color-primary;
 }
 li {
   list-style: none;
@@ -55,4 +56,11 @@ li {
 body {
   -webkit-text-size-adjust: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.clear{
+    clear: both;
+}
+.normal {
+    font-size: $con-font-size-nm !important;
+    color: $color-theme-black;
 }

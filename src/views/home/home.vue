@@ -1,8 +1,6 @@
 <!--  -->
 <template>
-    <div>
-        manage
-    </div>
+  <div></div>
 </template>
 
 <script>

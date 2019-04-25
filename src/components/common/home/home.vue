@@ -2,20 +2,20 @@
 <template>
     <div class="homeMenu">
         <el-menu
-            :default-active="activeIndex"
             class="el-menu-demo"
             mode="horizontal"
-            @select="handleSelect"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b">
-            <el-submenu index="2">
+            <div class="logo-wrap">
+                <img class="logo" src="./image/logo.png">
+                <span class="title">XXXX管理平台</span>
+            </div>
+            <el-submenu class="menulist" index="2">
                 <template slot="title">用户名</template>
                 <el-menu-item index="2-1">退出登录</el-menu-item>
                 <el-menu-item index="2-2">修改密码</el-menu-item>
             </el-submenu>
-            <el-menu-item index="4"><a href="#">订单管理</a></el-menu-item>
-            <el-menu-item index="1">处理中心</el-menu-item>
         </el-menu>
         <div class="content">
             <transition name="fade" mode="out-in">
@@ -26,10 +26,12 @@
 </template>
 
 <script>
+import MenuList from 'router/menu'
 export default {
     data() {
         return {
-            activeIndex: '1'
+            current: ['user'],
+            menuList: MenuList,
         };
     },
 
@@ -38,27 +40,61 @@ export default {
     computed: {},
 
     methods: {
-        handleSelect(key, keyPath) {
-            console.log(key, keyPath);
+        menuCheck(item, index) {
+            this.$store.commit('setMenuIndex', index)
         }
     }
 }
 
 </script>
 <style lang='scss' scoped>
+@import 'sass/index.scss';
 .homeMenu {
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity .3s;
     }
-
-    .fade-enter,
-    .fade-leave-active {
-        opacity: 0
+    /deep/ {
+        .ant-menu-horizontal {
+            line-height: 60px;
+            background-color: $color-theme-primary;
+        }
+        .ant-menu-submenu-title{
+            font-size: $con-font-size-base;
+        }
     }
-    /deep/ .el-menu--horizontal>.el-menu-item,.el-menu--horizontal>.el-submenu {
-        float: right !important;
+    .logo-wrap{
+        float: left;
+        line-height: 60px;
+        font-size: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        .logo,
+        .title{
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: $con-spacing-row-sm;
+        }
+        .logo{
+            width: 36px;
+            height: 36px;
+        }
+        .title{
+            font-size: 24px;
+            color: #fff;
+        }
+        .titleItem{
+            font-size: $con-font-size-lg;
+        }
+    }
+    .menulist{
+        float: right;
+        /deep/ .el-submenu__title{
+            color: #fff;
+        }
+        & :hover{
+            background-color: $color-theme-primary;
+        }
     }
 }
-
 </style>

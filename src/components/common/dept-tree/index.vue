@@ -1,8 +1,6 @@
 <!--  -->
 <template>
-    <div>
-        desList
-    </div>
+  <div></div>
 </template>
 
 <script>

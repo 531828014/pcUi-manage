@@ -1,15 +1,16 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
-
 module.exports = {
     devServer: {
-        port: 9090,
+        port: 7878,
         open: true,
         proxy: {
             '/proxy': {
+                //target: 'http://192.168.1.18:7676',
                 target: 'http://std-api.youzuowei.com.cn',
                 changeOrigin: true,
                 pathRewrite: {
@@ -22,12 +23,11 @@ module.exports = {
         loaderOptions: {
             sass: {
                 import: [
-                    path.join(__dirname, 'src/stylus/variable.scss'),
-                    path.join(__dirname, 'src/stylus/mixin/index.scss')
+                    path.join(__dirname, 'src/sass/variables.scss'),
+                    path.join(__dirname, 'src/sass/index.scss')
                 ]
-                // data: fs.readFileSync('src/sass/variables.scss', 'utf-8')
-            },
-        }
+            }
+        },
     },
     chainWebpack: config => {
         config.resolve.alias
@@ -35,11 +35,13 @@ module.exports = {
             .set('api', resolve('src/api'))
             .set('mixins', resolve('src/mixins'))
             .set('model', resolve('src/model'))
+            .set('utils', resolve('src/utils'))
             .set('components', resolve('src/components'))
             .set('router', resolve('src/router'))
             .set('store', resolve('src/store'))
             .set('sass', resolve('src/sass'))
             .set('views', resolve('src/views'))
             .set('assets', resolve('src/assets'))
+            .set('directive', resolve('src/directive'))
     }
 }

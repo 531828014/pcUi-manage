@@ -1,30 +1,27 @@
 import router from 'router/index'
-import { Modal, message } from 'ant-design-vue'
+import {MessageBox, Message} from 'element-ui'
 
 export function forceToLogin(data) {
-    Modal.confirm({
-        title: '错误',
-        cancelText: '取消',
-        okText: '确定',
-        onOk: function() {
-            router.push('/login')
-        },
-        onCancel: function() {
-            router.push('/login')
-        }
+    MessageBox.alert(data.Msg, '错误', {
+        confirmButtonText: '确定',
+        type: 'warning'
+    }).then(() => {
+        router.push('/login')
+    }).catch(() => {
+        router.push('/login')
     })
 }
 
 export function requestError(err) {
     if (err.response && err.response.status == 404) {
-        message.error('404错误')
-    }else if (err.response && err.response.status == 500) {
-        message.error('500错误，系统异常了');
+        Message({ type: 'error', message: '404错误' });
+    } else if (err.response && err.response.status == 500) {
+        Message({ type: 'error', message: '500错误，系统异常了' });
     } else if (err.response && err.response.status == 401) {
-        message.error('登陆信息过期，请重新登陆')
+        Message({ type: 'warning', message: '登陆信息过期，请重新登陆' })
         router.push('/login')
     } else {
         let msg = '请求错误：' + (err.response ? err.response.status : '') + ',' + (err.response ? err.response.statusText : '')
-        message.error(`${msg}`);
+        Message({ type: 'error', message: msg });
     }
 }
