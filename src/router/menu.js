@@ -20,6 +20,10 @@ export default [
             {
                 path: '/home/goods/goods-stock',
                 title: '商品库存',
+            },
+            {
+                path: '/home/goods/goods-category',
+                title: '商品品类',
             }
         ]
     },

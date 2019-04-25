@@ -1,7 +1,7 @@
 <!--  -->
 <template>
     <el-table
-        class="mms-table"
+        class="mms-table normal"
         ref="table"
         :data="data"
         :height="height"

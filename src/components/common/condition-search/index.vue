@@ -3,6 +3,7 @@
         <el-input 
             placeholder="请输入内容" 
             v-model="keyword" 
+            size="mini"
             class="input-with-select">
             <el-select 
                 v-model="field" 

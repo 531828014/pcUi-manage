@@ -2,19 +2,19 @@
 <template>
     <div class="pagination-layout" :class="[`${mode}`]">
         <template v-if="mode==='center'">
-            <div class="cell">
+            <div class="cell normal">
                 <slot name="center">
                     <el-pagination></el-pagination>
                 </slot>
             </div>
         </template>
         <template v-if="mode==='between'">
-            <div class="cell left">
+            <div class="cell left normal">
                 <slot name="left">
                     <el-button>左边</el-button>
                 </slot>
             </div>
-            <div class="cell right">
+            <div class="cell right normal">
                 <slot name="right">
                     <el-pagination></el-pagination>
                 </slot>

@@ -68,6 +68,11 @@ export default [
                         name: '商品库存',
                         component: () => import('views/goods/goods-stock/index')
                     },
+                    {
+                        path: '/home/goods/goods-category',
+                        name: '商品品类',
+                        component: () => import('views/goods/goods-category/index')
+                    },
                 ]
             },
             {

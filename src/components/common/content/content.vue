@@ -1,7 +1,7 @@
 <!--  -->
 <template>
     <div>
-        <div class="leftMenu">
+        <div class="leftMenu normal">
             <el-menu
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
@@ -88,14 +88,19 @@ export default {
     .leftMenu {
         width: 200px;
         float: left;
-        font-size: $con-font-size-nm;
-        padding: 0 $con-spacing-row-sm;
+        padding: 0 $con-spacing-row-sm 0 0;
         /deep/ {
             .el-submenu__title{
                 font-size: $con-font-size-base;
+                height: 45px;
+                line-height: 45px;
             }
             .el-menu-vertical-demo{
                 border-right: 1px solid $con-border-color;
+            }
+            .el-menu-item{
+                height: 40px;
+                line-height: 40px;
             }
         }
     }
@@ -107,6 +112,15 @@ export default {
             .el-date-editor .el-range-input,
             .el-input__inner{
                 font-size: $con-font-size-nm !important;
+            }
+            .el-table td, .el-table th{
+                padding: 7px 0 !important;
+            }
+            .el-button.is-circle{
+                padding: 7px !important;
+            }
+            .el-button{
+                padding: 7px 15px !important;
             }
         }
     }

@@ -1,13 +1,13 @@
 <template>
     <el-row class="mms-form-info">
         <el-col v-for="item in items" :key="item.prop" :span="item.span">
-            <div class="info-wrap">
-                <div class="cell label" :style="{width: `${labelWidth}px`}">
+            <div class="info-wrap normal">
+                <div class="cell label normal" :style="{width: `${labelWidth}px`}">
                     <slot :name="`${item.prop}-label`">
                         {{item.label}}
                     </slot>
                 </div>
-                <div class="cell content">
+                <div class="cell content normal">
                     <slot :name="`${item.prop}-content`">
                         {{formData[item.prop]}}
                     </slot>

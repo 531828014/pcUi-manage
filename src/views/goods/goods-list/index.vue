@@ -1,12 +1,12 @@
 <!--  -->
 <template>
-    <div>
-        <table-page-layout >
-            <el-button type="text" slot="actbar-left">随便玩玩</el-button>
-            <el-button type="text" slot="actbar-right-append" 
+    <div class="goods-list normal">
+        <table-page-layout>
+            <el-button type="primary btntext" class="normal" slot="actbar-left">添加商品</el-button>
+            <!-- <el-button type="text" class="normal"  slot="actbar-right-append" 
         @click="validate">验证表单</el-button>
-            <el-button type="text" slot="actbar-right-prepend" 
-        @click="changeColumn">动态改变表格</el-button>
+            <el-button type="text" class="normal"  slot="actbar-right-prepend" 
+        @click="changeColumn">动态改变表格</el-button> -->
             <el-card slot="content" shadow="never">
                 <el-form
                     :model="model"
@@ -121,4 +121,9 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+.goods-list{
+    .btntext{
+        color: white !important;
+    }
+}
 </style>
