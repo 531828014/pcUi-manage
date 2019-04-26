@@ -64,3 +64,25 @@ body {
     font-size: $con-font-size-nm !important;
     color: $color-theme-black;
 }
+.mmsFrom{
+    text-align: center;
+    /deep/ {
+        .el-form-item__label{
+            width: 100px;
+        }
+        .el-form-item{
+            display: inline-block;
+            width: 50%;
+            vertical-align: bottom;
+            margin-bottom: 0;
+        }
+        .el-form-item__content{
+            width: 80%;
+            display: inline-block;
+        }
+    }
+    .el-button{
+        margin: 30px 10px;
+        display: inline-block;
+    }
+}

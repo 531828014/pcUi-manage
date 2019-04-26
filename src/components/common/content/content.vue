@@ -109,6 +109,7 @@ export default {
             border-top: 1px solid $con-border-color;
         }
         /deep/ {
+            .el-form-item__label,
             .el-date-editor .el-range-input,
             .el-input__inner{
                 font-size: $con-font-size-nm !important;
@@ -121,6 +122,10 @@ export default {
             }
             .el-button{
                 padding: 7px 15px !important;
+            }
+            .el-input__inner{
+                height: 28px;
+                line-height: 28px;
             }
         }
     }

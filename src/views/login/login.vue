@@ -13,9 +13,9 @@ export default {
         };
     },
     created() {
-        // RoleApi.getAllRoleList().then(data => {
-        //     console.log(data);
-        // })
+        RoleApi.getAllRoleList().then(data => {
+            console.log(data);
+        })
     },
     components: {},
 
