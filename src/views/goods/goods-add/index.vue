@@ -3,52 +3,83 @@
     <table-page-layout>
         <div slot="actbar"></div>
         <el-card slot="content" shadow="never">
-            <el-form :model="form" class="mmsFrom">
+            <el-form 
+                :model="form" 
+                class="mmsFrom"
+                label-width="100px" >
                 <mms-form :items="items" :form-data="form">
                 </mms-form>
                 <el-button type="primary" @click="addGoods(form)">添加</el-button>
                 <el-button @click="addGoods(form)">返回</el-button>
-                
             </el-form>
         </el-card>
     </table-page-layout>
 </template>
 
 <script>
+import {initGoods} from 'model/goods'
 export default {
     data() {
         return {
-            form: {
-                code: '448',
-                name: '编号',
-                value: 666,
-                remark: 'sdakdjh'
-            },
+            form: initGoods(),
             items: [
                 {
-                    label: '键:',
-                    prop: 'code',
+                    label: '标题:',
+                    prop: 'title',
                     component: 'el-input'   
                 },
                 {
-                    label: '参数名:',
-                    prop: 'name',
-                    component: 'el-input'
-                },
-                {
-                    label: '参数值:',
-                    prop: 'value',
-                    component: 'el-input'   
-                },
-                {
-                    label: '说明:',
-                    prop: 'remark',
+                    label: '简介:',
+                    prop: 'briefIntroduction',
                     component: 'el-input',
                     attrs: {
                         type: 'textarea' 
+                    } 
+                },
+                {
+                    label: '进货价:',
+                    prop: 'purchasePrice',
+                    component: 'el-input',
+                    attrs: {
+                        type: 'number' 
+                    } 
+                },
+                {
+                    label: '销售价:',
+                    prop: 'sellingPrice',
+                    component: 'el-input',
+                    attrs: {
+                        type: 'number' 
                     }
                 },
-                
+                {
+                    label: '数量:',
+                    prop: 'number',
+                    component: 'el-input',
+                    attrs: {
+                        type: 'number' 
+                    } 
+                },
+                {
+                    label: '标题:',
+                    prop: 'title',
+                    component: 'el-input'   
+                },
+                {
+                    label: '简介:',
+                    prop: 'briefIntroduction',
+                    component: 'el-input'
+                },
+                {
+                    label: '类别:',
+                    prop: 'category',
+                    component: 'el-input'   
+                },
+                {
+                    label: '厂家/设计师:',
+                    prop: 'designer',
+                    component: 'el-input'
+                }
             ],
         };
     },
