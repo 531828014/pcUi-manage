@@ -1,6 +1,8 @@
-import test from './test'
-import list from './list'
+import Add from './add'
+import List from './list'
+import Remove from './remove'
 export default {
-    test,
-    list
+    Add,
+    List,
+    Remove
 }

@@ -88,7 +88,7 @@ export default {
     .leftMenu {
         width: 200px;
         float: left;
-        padding: 0 $con-spacing-row-sm 0 0;
+        padding: 0 $con-spacing-row-base 0 0;
         /deep/ {
             .el-submenu__title{
                 font-size: $con-font-size-base;
@@ -107,6 +107,7 @@ export default {
     .rightContent{
         .content-top{
             border-top: 1px solid $con-border-color;
+            padding: 10px 10px 0 10px;
         }
         /deep/ {
             .el-form-item__label,
@@ -122,6 +123,7 @@ export default {
             }
             .el-button{
                 padding: 7px 15px !important;
+                font-size: $con-font-size-nm;
             }
             .el-input__inner{
                 height: 28px;

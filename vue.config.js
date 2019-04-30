@@ -6,7 +6,7 @@ function resolve(dir) {
 }
 module.exports = {
     devServer: {
-        port: 7878,
+        port: 7879,
         open: true,
         proxy: {
             '/proxy': {

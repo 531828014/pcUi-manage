@@ -11,7 +11,6 @@
                     ref="form">
                     <mms-table
                         ref="table"
-                        :show-overflow-tooltip="true"
                         :data="model.data"
                         :columns="columns"
                         :header-cell-class-name="headerClaaName">
@@ -34,11 +33,12 @@ const columns = [
     {
         prop: 'title',
         label: '标题',
-        showOverflowTooltip: false
+        showOverflowTooltip: true
     },
     {
         prop: 'briefIntroduction',
-        label: '简介'
+        label: '简介',
+        showOverflowTooltip: true
     },
     {
         prop: 'purchasePrice',
@@ -51,11 +51,12 @@ const columns = [
     {
         prop: 'category',
         label: '品类',
-        showOverflowTooltip: false
+        showOverflowTooltip: true
     },
     {
         prop: 'designer',
-        label: '厂家/设计师'
+        label: '厂家/设计师',
+        showOverflowTooltip: true
     },
     {
         prop: 'number',
@@ -99,9 +100,8 @@ export default {
             }
         },
         getData() {
-            GoodsManageApi.test().then(data => {
+            GoodsManageApi.List().then(data => {
                 this.list = data.list
-                console.log(data)
             })
         },
         addGoods() {
@@ -110,12 +110,14 @@ export default {
             })
         },
         edit(res) {
-            console.log(res)
             this.dialogVisible = true
             this.dialogName = '修改系统参数'
         },
         remove(res) {
             console.log(res)
+            GoodsManageApi.Remove(res.id).then(data => {
+                this.getData()
+            })
         }
     }
 }

@@ -11,7 +11,7 @@ export default function() {
             if (data) {
                 let ret = {}
                 ret.list = data.data ? data.data.map(item => createGoods ({
-                    id: item.id,
+                    id: item.Id,
                     title: item.title, 
                     briefIntroduction: item.briefIntroduction, 
                     purchasePrice: item.purchasePrice,

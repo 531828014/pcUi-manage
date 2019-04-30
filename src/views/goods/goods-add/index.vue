@@ -6,17 +6,20 @@
             <el-form 
                 :model="form" 
                 class="mmsFrom"
-                label-width="100px" >
+                label-width="120px" >
                 <mms-form :items="items" :form-data="form">
                 </mms-form>
-                <el-button type="primary" @click="addGoods(form)">添加</el-button>
-                <el-button @click="addGoods(form)">返回</el-button>
             </el-form>
+            <div class="btn-box">
+                <el-button type="primary" @click="addGoods">添加</el-button>
+                <el-button @click="addGoods">返回</el-button>
+            </div>
         </el-card>
     </table-page-layout>
 </template>
 
 <script>
+import GoodsManageApi from 'api/main/goods-manage/index'
 import {initGoods} from 'model/goods'
 export default {
     data() {
@@ -24,18 +27,11 @@ export default {
             form: initGoods(),
             items: [
                 {
-                    label: '标题:',
+                    label: '商品标题:',
                     prop: 'title',
                     component: 'el-input'   
                 },
-                {
-                    label: '简介:',
-                    prop: 'briefIntroduction',
-                    component: 'el-input',
-                    attrs: {
-                        type: 'textarea' 
-                    } 
-                },
+                
                 {
                     label: '进货价:',
                     prop: 'purchasePrice',
@@ -53,22 +49,12 @@ export default {
                     }
                 },
                 {
-                    label: '数量:',
+                    label: '商品数量:',
                     prop: 'number',
                     component: 'el-input',
                     attrs: {
                         type: 'number' 
                     } 
-                },
-                {
-                    label: '标题:',
-                    prop: 'title',
-                    component: 'el-input'   
-                },
-                {
-                    label: '简介:',
-                    prop: 'briefIntroduction',
-                    component: 'el-input'
                 },
                 {
                     label: '类别:',
@@ -79,7 +65,15 @@ export default {
                     label: '厂家/设计师:',
                     prop: 'designer',
                     component: 'el-input'
-                }
+                },
+                {
+                    label: '商品简介:',
+                    prop: 'briefIntroduction',
+                    component: 'el-input',
+                    attrs: {
+                        type: 'textarea' 
+                    } 
+                },
             ],
         };
     },
@@ -89,8 +83,12 @@ export default {
     computed: {},
 
     methods: {
-        addGoods(data) {
-            console.log(data)
+        addGoods() {
+            console.log(this.form)
+            GoodsManageApi.Add(this.form).then(data => {
+                console.log(data)
+                this.form = initGoods()
+            })
         }
     }
 }
