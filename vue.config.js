@@ -6,12 +6,13 @@ function resolve(dir) {
 }
 module.exports = {
     devServer: {
-        port: 7878,
+        port: 7879,
         open: true,
         proxy: {
             '/proxy': {
                 //target: 'http://192.168.1.18:7676',
-                target: 'http://std-api.youzuowei.com.cn',
+                target: 'http://localhost:5699',
+                // target: 'http://std-api.youzuowei.com.cn',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/proxy': ''

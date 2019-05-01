@@ -7,7 +7,9 @@ import store from 'store/index';
 import 'api/setting/index'
 import 'sass/index.scss'
 import 'components/index.js'
+import VCharts from 'v-charts'
 
+Vue.use(VCharts)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 

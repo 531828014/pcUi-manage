@@ -60,7 +60,7 @@ export default [
         children: [
             {
                 path: '/home/user/user-list',
-                title: '售后订单',
+                title: '用户列表',
             }
         ]
     },

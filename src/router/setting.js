@@ -114,7 +114,7 @@ export default [
                 children: [
                     {
                         path: '/home/user/user-list',
-                        name: '售后订单',
+                        name: '用户列表',
                         component: () => import('views/user/user-list/index')
                     }
                 ]

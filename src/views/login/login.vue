@@ -6,16 +6,12 @@
 </template>
 
 <script>
-import RoleApi from 'api/main/role/index'
 export default {
     data() {
         return {
         };
     },
     created() {
-        // RoleApi.getAllRoleList().then(data => {
-        //     console.log(data);
-        // })
     },
     components: {},
 

@@ -15,7 +15,6 @@ export default {
         const children = this.items.map(item => {
             const isExist = this.$slots.hasOwnProperty(item.prop)
             let node = null
-            
             if (isExist) {
                 node = this.$slots[item.prop]
             } else if (item.component === 'el-select') {
@@ -39,6 +38,7 @@ export default {
             }
 
             if(item.attrs) {
+                //console.log(item)
                 this.setNodeAttrs(node, item.attrs)
             }
             return (
@@ -59,12 +59,18 @@ export default {
         setNodeAttrs(node, attrs) {
             if (Array.isArray(node)) {
                 node.map(item => {
-                    item.data = item.data ? item.data : {}
-                    item.data.attrs = item.data.attrs ? Object.assign(item.data.attrs, attrs) : Object.assign({}, attrs)
+                    let dataAttrs = item.data.attrs
+                    let propsData = node.componentOptions.propsData ? node.componentOptions.propsData : {}
+
+                    item.data.attrs = dataAttrs ? Object.assign(dataAttrs, attrs) : Object.assign({}, attrs)
+                    item.componentOptions.propsData = propsData ? Object.assign(propsData, attrs) : Object.assign({}, attrs)
                 })
             } else {
-                node.data = node.data ? node.data : {}
-                node.data.attrs = node.data.attrs ? Object.assign(node.data.attrs, attrs) : Object.assign({}, attrs)
+                let dataAttrs = node.data.attrs
+                let propsData = node.componentOptions.propsData ? node.componentOptions.propsData : {}
+
+                node.data.attrs = dataAttrs ? Object.assign(dataAttrs, attrs) : Object.assign({}, attrs)
+                node.componentOptions.propsData = propsData ? Object.assign(propsData, attrs) : Object.assign({}, attrs)
             }
         }
     }
