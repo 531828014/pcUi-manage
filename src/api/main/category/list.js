@@ -1,25 +1,20 @@
 import {$ajax_fetch} from 'api/setting/methods'
-import {createGoods} from 'model/goods'
+import {createCategory} from 'model/category'
 
 //
 export default function() {
     return new Promise ((resolve, reject) => {
         let option = {
-            url: '/Commodity/List',
+            url: '/Category/List',
         }
         $ajax_fetch(option).then(data => {
             if (data) {
                 let ret = {}
-                ret.list = data.data ? data.data.map(item => createGoods ({
+                ret.list = data.data ? data.data.map(item => createCategory ({
                     id: item.Id,
-                    title: item.title, 
-                    briefIntroduction: item.briefIntroduction, 
-                    purchasePrice: item.purchasePrice,
-                    sellingPrice: item.sellingPrice,
+                    name: item.name,
                     category: item.category,
-                    designer: item.designer,
-                    imgUrl: item.imgUrl,
-                    number: item.number
+                    icon: item.icon
                 })) : []
                 resolve(ret)
             }else {

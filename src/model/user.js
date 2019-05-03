@@ -1,12 +1,12 @@
 // 用户
 class UserInfo {
-    constructor({id, number, password, name, contactNumber, iDNumber, email}) {
+    constructor({id, number, password, name, contactNumber, idNumber, email}) {
         this.id = id
         this.number = number // 账号
         this.password = password // 密码
         this.name = name // 姓名
         this.contactNumber = contactNumber // 联系方式
-        this.iDNumber = iDNumber
+        this.idNumber = idNumber
         this.email = email
     }
 }
@@ -22,7 +22,7 @@ export function initUser() {
         password: '', // 密码
         name: '',
         contactNumber: '',
-        iDNumber: '',
+        idNumber: '',
         email: ''
     })
 }

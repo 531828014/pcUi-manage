@@ -2,7 +2,7 @@
 <template>
     <div class="goods-list normal">
         <table-page-layout>
-            <el-button type="primary btntext" class="normal" slot="actbar-left" @click="addGoods">添加商品</el-button>
+            <el-button type="primary btnWhite" class="normal" slot="actbar-left" @click="addGoods">添加商品</el-button>
             <el-card slot="content" shadow="never">
                 <el-form
                     :model="model"
@@ -124,9 +124,4 @@ export default {
 
 </script>
 <style lang='scss' scoped>
-.goods-list{
-    .btntext{
-        color: white !important;
-    }
-}
 </style>

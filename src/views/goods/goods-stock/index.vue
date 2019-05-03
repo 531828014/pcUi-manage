@@ -2,7 +2,7 @@
 <template>
     <div class="goods-stock normal">
         <table-page-layout>
-            <el-button type="primary btntext" class="normal" slot="actbar-left">添加商品</el-button>
+            <el-button type="primary btnWhite" class="normal" slot="actbar-left">添加商品</el-button>
             <!-- <el-button type="text" class="normal"  slot="actbar-right-append" 
         @click="validate">验证表单</el-button>
             <el-button type="text" class="normal"  slot="actbar-right-prepend" 
@@ -122,9 +122,4 @@ export default {
 
 </script>
 <style lang='scss' scoped>
-.goods-stock{
-    .btntext{
-        color: white !important;
-    }
-}
 </style>

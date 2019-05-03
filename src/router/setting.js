@@ -116,6 +116,11 @@ export default [
                         path: '/home/user/user-list',
                         name: '用户列表',
                         component: () => import('views/user/user-list/index')
+                    },
+                    {
+                        path: '/home/user/user-add',
+                        name: '添加用户',
+                        component: () => import('views/user/user-add/index')
                     }
                 ]
             },

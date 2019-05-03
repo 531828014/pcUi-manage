@@ -12,7 +12,7 @@
             </el-form>
             <div class="btn-box">
                 <el-button type="primary" @click="addGoods">添加</el-button>
-                <el-button @click="addGoods">返回</el-button>
+                <el-button @click="back">返回</el-button>
             </div>
         </el-card>
     </table-page-layout>
@@ -89,6 +89,9 @@ export default {
                 console.log(data)
                 this.form = initGoods()
             })
+        },
+        back() {
+            this.$router.back()
         }
     }
 }

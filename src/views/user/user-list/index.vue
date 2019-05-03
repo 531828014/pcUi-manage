@@ -1,12 +1,8 @@
 <!--  -->
 <template>
-    <div>
-        <table-page-layout >
-            <el-button type="text" slot="actbar-left">随便玩玩</el-button>
-            <el-button type="text" slot="actbar-right-append" 
-        @click="validate">验证表单</el-button>
-            <el-button type="text" slot="actbar-right-prepend" 
-        @click="changeColumn">动态改变表格</el-button>
+    <div class="goods-list normal">
+        <table-page-layout>
+            <el-button type="primary btnWhite" class="normal" slot="actbar-left" @click="addUser">添加用户</el-button>
             <el-card slot="content" shadow="never">
                 <el-form
                     :model="model"
@@ -15,11 +11,14 @@
                     ref="form">
                     <mms-table
                         ref="table"
-                        expand
-                        :show-overflow-tooltip="true"
                         :data="model.data"
                         :columns="columns"
-                        :header-cell-class-name="headerClaaName"></mms-table>
+                        :header-cell-class-name="headerClaaName">
+                        <template slot="operation" slot-scope="{scope}">
+                            <el-button icon="el-icon-edit" circle @click="edit(scope.row)" type="primary" title="编辑"></el-button>
+                            <el-button icon="el-icon-delete" circle @click="remove(scope.row)" type="danger" title="删除"></el-button>
+                        </template>
+                    </mms-table>
                 </el-form>
             </el-card>
         </table-page-layout>
@@ -29,32 +28,30 @@
 </template>
 
 <script>
+import UserManageApi from 'api/main/user-manage/index'
 const columns = [
     {
         prop: 'number',
         label: '账号',
-        showOverflowTooltip: false
+        showOverflowTooltip: true
     },
-    // {
-    //     prop: 'password',
-    //     label: '密码'
-    // },
     {
         prop: 'name',
-        label: '姓名'
+        label: '姓名',
+        showOverflowTooltip: true
     },
     {
-        prop: 'ID number',
+        prop: 'idNumber',
         label: '身份证号'
     },
     {
         prop: 'contactNumber',
-        label: '联系电话',
-        showOverflowTooltip: false
+        label: '联系电话'
     },
     {
-        prop: 'E-mail',
-        label: '电子邮箱'
+        prop: 'email',
+        label: '电子邮箱',
+        showOverflowTooltip: true
     },
     {
         label: '操作',
@@ -73,9 +70,9 @@ export default {
             },
         };
     },
-
-    components: {},
-
+    created() {
+        this.getData()
+    },
     computed: {
         model() {
             return {
@@ -84,7 +81,6 @@ export default {
             }
         }
     },
-
     methods: {
         validate() {
             this.$refs.form.validate()
@@ -94,24 +90,26 @@ export default {
                 return 'required-field'
             }
         },
-        changeColumn() {
-            this.columns = [
-                {
-                    prop: 'number',
-                    label: '编号'
-                },
-                {
-                    prop: 'title',
-                    label: '标题'
-                },
-                {
-                    label: '操作',
-                    prop: 'operation',
-                    width: 160,
-                    fixed: 'right'
-                }
-            ]
+        getData() {
+            UserManageApi.List().then(data => {
+                this.list = data.list
+            })
         },
+        addUser() {
+            this.$router.push({
+                path: '/home/user/user-add',
+            })
+        },
+        edit(res) {
+            this.dialogVisible = true
+            this.dialogName = '修改系统参数'
+        },
+        remove(res) {
+            console.log(res)
+            UserManageApi.Remove(res.id).then(data => {
+                this.getData()
+            })
+        }
     }
 }
 

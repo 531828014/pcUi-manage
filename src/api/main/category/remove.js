@@ -4,7 +4,7 @@ import {$ajax_fetch} from 'api/setting/methods'
 export default function(Id) {
     return new Promise ((resolve, reject) => {
         let option = {
-            url: '/Commodity/Remove',
+            url: '/Category/Remove',
             data: {
                 Id
             }
