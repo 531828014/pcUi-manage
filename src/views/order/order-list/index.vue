@@ -1,12 +1,7 @@
 <!--  -->
 <template>
-    <div>
-        <table-page-layout >
-            <el-button type="text" slot="actbar-left">随便玩玩</el-button>
-            <el-button type="text" slot="actbar-right-append" 
-        @click="validate">验证表单</el-button>
-            <el-button type="text" slot="actbar-right-prepend" 
-        @click="changeColumn">动态改变表格</el-button>
+    <div class="goods-list normal">
+        <table-page-layout>
             <el-card slot="content" shadow="never">
                 <el-form
                     :model="model"
@@ -15,42 +10,55 @@
                     ref="form">
                     <mms-table
                         ref="table"
-                        expand
-                        :show-overflow-tooltip="true"
                         :data="model.data"
                         :columns="columns"
-                        :header-cell-class-name="headerClaaName"></mms-table>
+                        :header-cell-class-name="headerClaaName">
+                        <template slot="operation" slot-scope="{scope}">
+                            <el-button  @click="edit(scope.row)" type="primary" title="">发货</el-button>
+                        </template>
+                    </mms-table>
                 </el-form>
             </el-card>
         </table-page-layout>
-        <pagination-layout mode='center'>
-        </pagination-layout>
+        <!-- <pagination-layout mode='center'>
+        </pagination-layout> -->
     </div>
 </template>
 
 <script>
+import GoodsManageApi from 'api/main/goods-manage/index'
 const columns = [
     {
-        prop: 'Id',
-        label: '编号',
-        showOverflowTooltip: false
-    },
-    // {
-    //     prop: 'password',
-    //     label: '密码'
-    // },
-    {
-        prop: 'address',
-        label: '地址'
+        prop: 'title',
+        label: '标题',
+        showOverflowTooltip: true
     },
     {
-        prop: 'contactNumber',
-        label: '联系电话'
+        prop: 'briefIntroduction',
+        label: '简介',
+        showOverflowTooltip: true
     },
     {
-        prop: 'total',
-        label: '总计金额',
-        showOverflowTooltip: false
+        prop: 'purchasePrice',
+        label: '进货价'
+    },
+    {
+        prop: 'sellingPrice',
+        label: '销售价'
+    },
+    {
+        prop: 'category',
+        label: '品类',
+        showOverflowTooltip: true
+    },
+    {
+        prop: 'designer',
+        label: '厂家/设计师',
+        showOverflowTooltip: true
+    },
+    {
+        prop: 'number',
+        label: '数量'
     },
     {
         label: '操作',
@@ -69,9 +77,9 @@ export default {
             },
         };
     },
-
-    components: {},
-
+    created() {
+        this.getData()
+    },
     computed: {
         model() {
             return {
@@ -80,7 +88,6 @@ export default {
             }
         }
     },
-
     methods: {
         validate() {
             this.$refs.form.validate()
@@ -90,24 +97,26 @@ export default {
                 return 'required-field'
             }
         },
-        changeColumn() {
-            this.columns = [
-                {
-                    prop: 'number',
-                    label: '编号'
-                },
-                {
-                    prop: 'title',
-                    label: '标题'
-                },
-                {
-                    label: '操作',
-                    prop: 'operation',
-                    width: 160,
-                    fixed: 'right'
-                }
-            ]
+        getData() {
+            GoodsManageApi.List().then(data => {
+                this.list = data.list
+            })
         },
+        addGoods() {
+            this.$router.push({
+                path: '/home/goods/goods-add',
+            })
+        },
+        edit(res) {
+            this.dialogVisible = true
+            this.dialogName = '修改系统参数'
+        },
+        remove(res) {
+            console.log(res)
+            GoodsManageApi.Remove(res.id).then(data => {
+                this.getData()
+            })
+        }
     }
 }
 

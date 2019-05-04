@@ -22,7 +22,7 @@ export default [
         path: '/home',
         name: 'XXX管理系统',
         component: Home,
-        redirect: '/home/my',
+        redirect: '/home/goods/goods-list',
         children: [
             {
                 path: '/404',

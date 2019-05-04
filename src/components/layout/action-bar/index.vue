@@ -1,7 +1,6 @@
 <template>
     <div class="action-bar-layout normal">
         <slot name="actbar-left">
-            快速查询
         </slot>
         <div class="right">
             <slot name="actbar-right">

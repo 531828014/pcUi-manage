@@ -5,7 +5,7 @@
             v-model="keyword" 
             size="mini"
             class="input-with-select">
-            <el-select 
+            <!-- <el-select 
                 v-model="field" 
                 slot="prepend"
                 value-key="code"
@@ -17,7 +17,7 @@
                     :label="item.name"
                     :value="item">
                 </el-option>
-            </el-select>
+            </el-select> -->
             <el-button 
                 slot="append" 
                 icon="el-icon-search" 

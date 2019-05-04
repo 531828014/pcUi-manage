@@ -32,8 +32,8 @@
                 </el-dialog>
             </el-card>
         </table-page-layout>
-        <pagination-layout mode='center'>
-        </pagination-layout>
+        <!-- <pagination-layout mode='center'>
+        </pagination-layout> -->
     </div>
 </template>
 

@@ -1,6 +1,5 @@
 import {$ajax_fetch} from 'api/setting/methods'
 import {createGoods} from 'model/goods'
-
 //
 export default function() {
     return new Promise ((resolve, reject) => {
@@ -18,8 +17,12 @@ export default function() {
                     sellingPrice: item.sellingPrice,
                     category: item.category,
                     designer: item.designer,
-                    imgUrl: item.imgUrl,
-                    number: item.number
+                    number: item.number,
+                    imgUrl: item.imgUrl ? item.imgUrl.map(url => {
+                        return{
+                            url: 'http://localhost:5699/' + url
+                        }
+                    }) : []
                 })) : []
                 resolve(ret)
             }else {

@@ -1,13 +1,14 @@
 <!--  -->
 <template>
     <div>
-      <div>
+      <el-row>
+      <el-col :span="12">
         <ve-bar :data="chartData"></ve-bar>
-      </div>
-      <!-- <div>
-        <ve-line :data="chartData"></ve-line>
-      </div> -->
-      
+      </el-col>
+      <el-col :span="12">
+        <!-- <ve-line :data="chartData"></ve-line> -->
+      </el-col>
+      </el-row>
     </div>
 </template>
 

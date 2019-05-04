@@ -26,7 +26,7 @@ export function initGoods() {
         sellingPrice: '',
         category: '',
         designer: '',
-        imgUrl: '',
+        imgUrl: [],
         number: 0
     })
 }

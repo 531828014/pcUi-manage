@@ -1,9 +1,9 @@
 export default [ 
-    {
-        title: '首页',
-        path: '/home',
-        icon: 'el-icon-menu',
-    },
+    // {
+    //     title: '首页',
+    //     path: '/home',
+    //     icon: 'el-icon-menu',
+    // },
     {
         title: '商品管理',
         path: '/home/goods',
@@ -17,10 +17,10 @@ export default [
                 path: '/home/goods/goods-add',
                 title: '新增商品',
             },
-            {
-                path: '/home/goods/goods-stock',
-                title: '商品库存',
-            },
+            // {
+            //     path: '/home/goods/goods-stock',
+            //     title: '商品库存',
+            // },
             {
                 path: '/home/goods/goods-category',
                 title: '商品品类',

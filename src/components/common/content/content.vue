@@ -5,6 +5,7 @@
             <el-menu
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
+                :default-openeds="defaultOpeneds"
                 @close="handleClose">
                 <div 
                     v-for="(item,index) in menuList"
@@ -58,6 +59,7 @@ export default {
         return {
             menuList: MenuList,
             collapsed: false,
+            defaultOpeneds: ['0']
         };
     },
 
@@ -105,6 +107,7 @@ export default {
         }
     }
     .rightContent{
+        margin-left: 200px;
         .content-top{
             border-top: 1px solid $con-border-color;
             padding: 10px 10px 0 10px;

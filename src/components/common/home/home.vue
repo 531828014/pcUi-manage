@@ -9,12 +9,12 @@
             active-text-color="#ffd04b">
             <div class="logo-wrap">
                 <img class="logo" src="./image/logo.png">
-                <span class="title">XXXX管理平台</span>
+                <span class="title">商城后台管理平台</span>
             </div>
             <el-submenu class="menulist" index="2">
                 <template slot="title">用户名</template>
                 <el-menu-item index="2-1">退出登录</el-menu-item>
-                <el-menu-item index="2-2">修改密码</el-menu-item>
+                <!-- <el-menu-item index="2-2">修改密码</el-menu-item> -->
             </el-submenu>
         </el-menu>
         <div class="content">
