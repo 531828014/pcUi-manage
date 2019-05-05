@@ -82,7 +82,7 @@ export default {
                     prop: 'briefIntroduction',
                     component: 'el-input',
                     attrs: {
-                        type: 'textarea' 
+                        type: 'textarea'
                     } 
                 },
             ],

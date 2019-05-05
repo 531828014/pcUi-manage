@@ -21,7 +21,7 @@
                     </mms-table>
                 </el-form>
                 <el-dialog :title="dialogName" :visible.sync="dialogVisible">
-                    <el-form :model="form" class="mmsFrom" label-width="120px" >
+                    <el-form :model="form" class="mmsFrom" label-width="120px" :rules="model.rules">
                         <mms-form :items="items" :form-data="form">
                         </mms-form>
                     </el-form>
@@ -70,7 +70,9 @@ export default {
             columns: columns,
             form: initCategory(),
             formRules: {
-                title: [{ required: true, message: '请输入标题', trigger: 'blur'}],
+                name: [{ required: true, message: '', trigger: 'blur'}],
+                category: [{ required: true, message: '', trigger: 'blur'}],
+                icon: [{ required: true, message: '', trigger: 'blur'}],
             },
             items: [
                 {

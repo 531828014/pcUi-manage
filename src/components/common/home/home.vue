@@ -12,7 +12,7 @@
                 <span class="title">商城后台管理平台</span>
             </div>
             <el-submenu class="menulist" index="2">
-                <template slot="title">用户名</template>
+                <template slot="title">{{$store.state.userInfo.name}}</template>
                 <el-menu-item index="2-1">退出登录</el-menu-item>
                 <!-- <el-menu-item index="2-2">修改密码</el-menu-item> -->
             </el-submenu>
