@@ -20,7 +20,7 @@ export default function() {
                     number: item.number,
                     imgUrl: item.imgUrl ? item.imgUrl.map(url => {
                         return{
-                            url: 'http://localhost:5699/' + url
+                            url: window.GlobalConfig.baseUrl + '/' + url
                         }
                     }) : []
                 })) : []

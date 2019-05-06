@@ -32,6 +32,7 @@
 <script>
 import GoodsManageApi from 'api/main/goods-manage/index'
 import {initGoods} from 'model/goods'
+import {mapState} from 'vuex'
 export default {
     data() {
         return {
@@ -91,8 +92,11 @@ export default {
     },
 
     components: {},
-
-    computed: {},
+    computed: {
+        ...mapState({
+            serverAddress: state => state.serverAddress,
+        })
+    },
 
     methods: {
         addGoods() {

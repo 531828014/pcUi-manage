@@ -13,8 +13,10 @@
                     :key="index"
                     :index="`${index}`"
                     @click="activeIndex(index)">{{item.title}}</span> -->
-                <el-submenu  index="2" class=" menulist">
-                    <template slot="title">用户名</template>
+                <el-submenu  index="2" class="menulist">
+                    <template slot="title">
+                        <span>用户名</span>
+                    </template>
                     <el-menu-item index="2-1">退出登录</el-menu-item>
                     <el-menu-item index="2-2">修改密码</el-menu-item>
                 </el-submenu>    
@@ -43,7 +45,9 @@ export default {
             menuList: MenuList,
         };
     },
-
+    created() {
+        console.log(window.GlobalConfig)
+    },
     components: {
         sidebar
     },
@@ -92,7 +96,7 @@ export default {
     height: 100%;
     overflow: hidden;
     .tarbar{
-        background-color: $color-theme-black;
+        background-color: $color-theme-primary;
         color: #fff;
         position: fixed;
         width: 100%;
@@ -118,6 +122,24 @@ export default {
             font-size: $con-font-size-base;
         }
     }
+    .menulist{
+        float: right;
+        margin-right: $con-spacing-row-lg;
+        color:#fff;
+        /deep/ {
+            .el-submenu__title {
+                line-height: 60px;
+                height: 60px;
+                color: #fff;
+                cursor: pointer;
+                width: 100px;
+                background-color: $color-theme-primary !important;
+            }
+            .el-submenu__title i{
+                color: #fff;
+            }
+        }
+    }
     .logo-wrap{
         float: left;
         width: 100%;
@@ -141,15 +163,6 @@ export default {
         }
         .titleItem{
             font-size: $con-font-size-lg;
-        }
-    }
-    .menulist{
-        float: right;
-        /deep/ .el-submenu__title{
-            color: #fff;
-        }
-        & :hover{
-            background-color: $color-theme-primary;
         }
     }
 }
