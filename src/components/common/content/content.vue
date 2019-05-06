@@ -1,116 +1,64 @@
 <!--  -->
 <template>
-    <div>
-        <div class="leftMenu normal">
-            <el-menu
-                class="el-menu-vertical-demo"
-                @open="handleOpen"
-                :default-openeds="defaultOpeneds"
-                @close="handleClose">
-                <div 
-                    v-for="(item,index) in menuList"
-                    :key="index">
-                    <el-submenu 
-                        v-if="item.children"
-                        :index="`${index}`">
-                        <template slot="title">
-                            <i :class="item.icon"></i>
-                            <router-link :to="item.path">
-                                <span>{{item.title}}</span>
-                            </router-link>
-                        </template>
-                        <div 
-                            class="listItem"
-                            v-for="(it,itIndex) in item.children" 
-                            :key="itIndex">
-                            <router-link :to="it.path">
-                                <el-menu-item :index="`${index}-${itIndex}`">
-                                    {{it.title}}
-                                </el-menu-item>
-                            </router-link>
-                        </div>
-                    </el-submenu>
-                    <div v-else>
-                        <router-link :to="item.path">
-                            <el-menu-item :index="`${index}`" class="title">
-                                <i :class="item.icon"></i>
-                                {{item.title}}
-                            </el-menu-item>
-                        </router-link>
-                    </div>
-                </div>
-                
-            </el-menu>
-        </div>
+    <div class="content">
         <div class="rightContent">
             <phms-bread-crumb></phms-bread-crumb>
             <div class="content-top">
-                <router-view></router-view>
+                <transition name="fade" mode="out-in">
+                    <router-view></router-view>
+                </transition>
             </div>
-            <copyright></copyright>
         </div>
+        <div class="clear"></div>
     </div>
 </template>
 
 <script>
-import MenuList from 'router/menu'
+import menuList from 'router/menu'
 export default {
     data() {
         return {
-            menuList: MenuList,
-            collapsed: false,
-            defaultOpeneds: ['0']
+            menuList: menuList,
+            isCollapse: true
         };
     },
-
+    created() {
+        let ret = document.getElementsByClassName('el-menu-vertical-demo')
+        console.log(ret)
+    },
     computed: {
-        setTitle() {
-            let number = this.$store.state.menuIndex
-            return this.menuList[number].children
+        setMenuList() {
+            this.$store.state.menuIndex
+            return this.menuList[this.$store.state.menuIndex].children
         }
     },
-
     methods: {
-        handleOpen(e) {
-            // console.log('click', e)
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
         },
-        handleClose(e) {
-            // console.log('titleClick', e)
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
         },
-        toggleCollapsed() {
-            this.collapsed = !this.collapsed
-        },
-    },
+        onCollapse() {
+            if(this.isCollapse) {
+                this.isCollapse = false
+            }else{
+                this.isCollapse = true
+            }
+        }
+    }
 }
 
 </script>
 <style lang='scss' scoped>
 @import 'sass/index.scss';
 .content{
-    .leftMenu {
-        width: 200px;
-        float: left;
-        padding: 0 $con-spacing-row-base 0 0;
-        /deep/ {
-            .el-submenu__title{
-                font-size: $con-font-size-base;
-                height: 45px;
-                line-height: 45px;
-            }
-            .el-menu-vertical-demo{
-                border-right: 1px solid $con-border-color;
-            }
-            .el-menu-item{
-                height: 40px;
-                line-height: 40px;
-            }
-        }
-    }
+    min-width:1100px;
     .rightContent{
-        margin-left: 200px;
         .content-top{
             border-top: 1px solid $con-border-color;
-            padding: 10px 10px 0 10px;
+            padding-left: $con-spacing-row-base;
+            padding-right: $con-spacing-row-base;
         }
         /deep/ {
             .el-form-item__label,
@@ -135,4 +83,5 @@ export default {
         }
     }
 }
+
 </style>

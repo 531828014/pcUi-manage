@@ -2,31 +2,40 @@
 <template>
     <div class="homeMenu">
         <el-menu
-            class="el-menu-demo"
+            class="el-menu-demo tarbar"
             mode="horizontal"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b">
+            @select="handleSelect">
             <div class="logo-wrap">
                 <img class="logo" src="./image/logo.png">
-                <span class="title">商城后台管理平台</span>
+                <span class="title">商城后台管理系统</span>
+                <!-- <span  class="title titleItem"
+                    v-for="(item, index) in menuList"
+                    :key="index"
+                    :index="`${index}`"
+                    @click="activeIndex(index)">{{item.title}}</span> -->
+                <el-submenu  index="2" class=" menulist">
+                    <template slot="title">用户名</template>
+                    <el-menu-item index="2-1">退出登录</el-menu-item>
+                    <el-menu-item index="2-2">修改密码</el-menu-item>
+                </el-submenu>    
             </div>
-            <el-submenu class="menulist" index="2">
-                <template slot="title">{{$store.state.userInfo.name}}</template>
-                <el-menu-item index="2-1">退出登录</el-menu-item>
-                <!-- <el-menu-item index="2-2">修改密码</el-menu-item> -->
-            </el-submenu>
+            
         </el-menu>
-        <div class="content">
+        <sidebar @menuOpen="handleOpen" @menuClose="handleClose" ref="sidebar"></sidebar>
+        <div class="rightcontent"  ref="content">
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
+            <copyright></copyright>
+            <div class="clear"></div>
         </div>
     </div>
 </template>
 
 <script>
+import sidebar from './side-bar/index';
 import MenuList from 'router/menu'
+import { mapState, mapMutations } from 'vuex'
 export default {
     data() {
         return {
@@ -35,21 +44,67 @@ export default {
         };
     },
 
-    components: {},
+    components: {
+        sidebar
+    },
 
-    computed: {},
+    computed: {
+        ...mapState({
+            contentScrollTop: state => state.user.contentScrollTop,
+            isSaveScroll: state => state.user.isSaveScroll
+        })
+    },
 
     methods: {
         menuCheck(item, index) {
             this.$store.commit('setMenuIndex', index)
-        }
+        },
+        handleOpen() {
+            this.$refs.content.style.marginLeft = '200px'
+            this.$refs.sidebar.$el.style.width = '200px'
+        },
+        handleClose() {
+            this.$refs.content.style.marginLeft = '64px'
+            this.$refs.sidebar.$el.style.width = '64px'
+        },
+        contentScroll() {
+            if (this.isSaveScroll) {
+                this.setScrollTop(this.$refs.content.scrollTop)
+            }
+        },
+        ...mapMutations([
+            'setScrollTop'
+        ]),
+        handleSelect(key, keyPath) {
+            // console.log(key, keyPath);
+        },
+        // activeIndex(index) {
+        //     this.$store.commit('setMenuIndex', index)
+        // }
     }
 }
-
 </script>
+
 <style lang='scss' scoped>
 @import 'sass/index.scss';
 .homeMenu {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .tarbar{
+        background-color: $color-theme-black;
+        color: #fff;
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+    }
+    .rightcontent {
+        margin-left: 200px;
+        margin-top: 63px;
+        /* z-index: -1; */
+        height: 100%;
+        top: 63px;
+    }
     .fade-enter-active,
     .fade-leave-active {
         transition: opacity .3s;
@@ -65,6 +120,7 @@ export default {
     }
     .logo-wrap{
         float: left;
+        width: 100%;
         line-height: 60px;
         font-size: 0;
         overflow: hidden;
@@ -97,4 +153,5 @@ export default {
         }
     }
 }
+
 </style>

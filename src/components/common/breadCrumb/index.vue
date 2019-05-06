@@ -19,6 +19,9 @@ export default {
         return {
         };
     },
+    created() {
+        console.log(this.$route.matched)
+    },
     computed: {
         setRoute() {
             let ret = this.$route.matched
@@ -37,6 +40,7 @@ export default {
     height: 50px;
     display: table-cell;
     vertical-align: middle;
+    padding-left: $con-spacing-row-base;
     /deep/ .el-breadcrumb__inner.is-link {
         color: $con-text-color;
         font-weight: normal; 
