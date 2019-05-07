@@ -129,9 +129,14 @@ export default {
             this.show()
         },
         remove(res) {
-            console.log(res)
-            CategoryApi.Remove(res.id).then(data => {
-                this.getData()
+            this.$confirm('是否删除该品类?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                CategoryApi.Remove(res.id).then(data => {
+                    this.getData()
+                })
             })
         },
         addCategory() {

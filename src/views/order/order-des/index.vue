@@ -14,7 +14,8 @@
                         :columns="columns"
                         :header-cell-class-name="headerClaaName">
                         <template slot="operation" slot-scope="{scope}">
-                            <el-button  @click="edit(scope.row)" type="primary" title="">发货</el-button>
+                            <el-button v-if="scope.row.status == '已付款'" @click="edit(scope.row)" type="primary" title="">发货</el-button>
+                            <el-button v-if="scope.row.status == '未付款'" @click="remove(scope.row)" type="primary" title="">取消</el-button>
                         </template>
                     </mms-table>
                 </el-form>
@@ -26,39 +27,41 @@
 </template>
 
 <script>
-import GoodsManageApi from 'api/main/goods-manage/index'
+import OrderApi from 'api/main/order/index'
 const columns = [
     {
-        prop: 'title',
-        label: '标题',
+        prop: 'id',
+        label: '订单号',
         showOverflowTooltip: true
     },
     {
-        prop: 'briefIntroduction',
-        label: '简介',
+        prop: 'userId',
+        label: '用户编号',
+        showOverflowTooltip: true
+    },
+    
+    {
+        prop: 'address',
+        label: '地址',
         showOverflowTooltip: true
     },
     {
-        prop: 'purchasePrice',
-        label: '进货价'
+        prop: 'contactNumber',
+        label: '联系电话'
     },
     {
-        prop: 'sellingPrice',
-        label: '销售价'
-    },
-    {
-        prop: 'category',
-        label: '品类',
+        prop: 'remark',
+        label: '备注',
         showOverflowTooltip: true
     },
     {
-        prop: 'designer',
-        label: '厂家/设计师',
-        showOverflowTooltip: true
+        prop: 'total',
+        label: '总金额',
+        
     },
     {
-        prop: 'number',
-        label: '数量'
+        prop: 'status',
+        label: '订单状态'
     },
     {
         label: '操作',
@@ -98,23 +101,32 @@ export default {
             }
         },
         getData() {
-            GoodsManageApi.List().then(data => {
-                this.list = data.list
-            })
-        },
-        addGoods() {
-            this.$router.push({
-                path: '/home/goods/goods-add',
-            })
+            console.log(this.$store.state.userInfo)
+            if(this.$store.state.userInfo.id) {
+                let opt = {
+                    id: this.$store.state.userInfo.id
+                }
+                OrderApi.DesList(opt).then(data => {
+                    this.list = data
+                })
+            }else{
+                this.$message({ type: 'warning', message: '登陆信息过期，请重新登陆' })
+                this.$router.push({path: '/login'}); 
+            }
+            
         },
         edit(res) {
-            this.dialogVisible = true
-            this.dialogName = '修改系统参数'
+            //发货
         },
         remove(res) {
-            console.log(res)
-            GoodsManageApi.Remove(res.id).then(data => {
-                this.getData()
+            this.$confirm('是否取消该订单?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                OrderApi.Remove(res.id).then(data => {
+                    this.getData()
+                })
             })
         }
     }

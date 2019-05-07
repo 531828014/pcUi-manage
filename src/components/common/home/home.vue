@@ -15,10 +15,9 @@
                     @click="activeIndex(index)">{{item.title}}</span> -->
                 <el-submenu  index="2" class="menulist">
                     <template slot="title">
-                        <span>用户名</span>
+                        <span>{{$store.state.userInfo.name}}</span>
                     </template>
-                    <el-menu-item index="2-1">退出登录</el-menu-item>
-                    <el-menu-item index="2-2">修改密码</el-menu-item>
+                    <el-menu-item index="2-1" @click="setLogin">退出登录</el-menu-item>
                 </el-submenu>    
             </div>
             
@@ -82,6 +81,10 @@ export default {
         handleSelect(key, keyPath) {
             // console.log(key, keyPath);
         },
+        setLogin() {
+            this.$store.state.userInfo = {}
+            this.$router.push({path: '/login'}); 
+        }
         // activeIndex(index) {
         //     this.$store.commit('setMenuIndex', index)
         // }

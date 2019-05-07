@@ -114,9 +114,14 @@ export default {
             this.dialogName = '修改系统参数'
         },
         remove(res) {
-            console.log(res)
-            GoodsManageApi.Remove(res.id).then(data => {
-                this.getData()
+            this.$confirm('是否删除该商品?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                GoodsManageApi.Remove(res.id).then(data => {
+                    this.getData()
+                })
             })
         }
     }

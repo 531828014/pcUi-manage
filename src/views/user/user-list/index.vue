@@ -105,9 +105,14 @@ export default {
             this.dialogName = '修改系统参数'
         },
         remove(res) {
-            console.log(res)
-            UserManageApi.Remove(res.id).then(data => {
-                this.getData()
+            this.$confirm('是否删除该用户?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                UserManageApi.Remove(res.id).then(data => {
+                    this.getData()
+                })
             })
         }
     }
