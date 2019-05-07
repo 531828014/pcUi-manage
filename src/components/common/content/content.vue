@@ -76,10 +76,6 @@ export default {
                 padding: 7px 15px !important;
                 font-size: $con-font-size-nm;
             }
-            .el-input__inner{
-                height: 28px;
-                line-height: 28px;
-            }
         }
     }
 }

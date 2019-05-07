@@ -11,7 +11,7 @@ import VCharts from 'v-charts'
 
 Vue.use(VCharts)
 Vue.config.productionTip = false
-Vue.use(ElementUI)
+Vue.use(ElementUI, { size: 'mini' })
 
 new Vue({
     router,
