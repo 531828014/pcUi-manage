@@ -68,16 +68,10 @@ body {
     /deep/ {
         .el-form-item{
             display: inline-block;
-            // width: 50%;
             vertical-align: bottom;
             margin-bottom: 0;
         }
-        .el-textarea__inner,
-        .el-input__inner{
-            // width: 400px !important;
-        }
     }
-    
     .el-button{
         margin: 30px 10px;
         display: inline-block;
