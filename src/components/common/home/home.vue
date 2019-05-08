@@ -146,6 +146,7 @@ export default {
     .logo-wrap{
         float: left;
         width: 100%;
+        height: 60px;
         line-height: 60px;
         font-size: 0;
         overflow: hidden;

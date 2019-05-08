@@ -15,7 +15,7 @@
                         :header-cell-class-name="headerClaaName">
                         <template slot="operation" slot-scope="{scope}">
                             <el-button  @click="edit(scope.row)" type="primary" title="">退换货</el-button>
-                            <el-button  @click="edit(scope.row)" type="primary" title="">拒绝</el-button>
+                            <el-button  @click="remove(scope.row)" type="primary" title="">拒绝</el-button>
                         </template>
                     </mms-table>
                 </el-form>
@@ -27,39 +27,42 @@
 </template>
 
 <script>
-import GoodsManageApi from 'api/main/goods-manage/index'
+import AfterSaleApi from 'api/main/after-sale/index'
+import OrderApi from 'api/main/order/index'
 const columns = [
     {
-        prop: 'title',
-        label: '标题',
+        prop: 'orderGoodsId',
+        label: '订单号',
         showOverflowTooltip: true
     },
     {
-        prop: 'briefIntroduction',
-        label: '简介',
+        prop: 'userId',
+        label: '用户编号',
+        showOverflowTooltip: true
+    },
+    
+    {
+        prop: 'address',
+        label: '地址',
         showOverflowTooltip: true
     },
     {
-        prop: 'purchasePrice',
-        label: '进货价'
+        prop: 'contactNumber',
+        label: '联系电话'
     },
     {
-        prop: 'sellingPrice',
-        label: '销售价'
-    },
-    {
-        prop: 'category',
-        label: '品类',
+        prop: 'remark',
+        label: '备注',
         showOverflowTooltip: true
     },
     {
-        prop: 'designer',
-        label: '厂家/设计师',
-        showOverflowTooltip: true
+        prop: 'total',
+        label: '总金额',
+        
     },
     {
-        prop: 'number',
-        label: '数量'
+        prop: 'status',
+        label: '订单状态'
     },
     {
         label: '操作',
@@ -99,7 +102,7 @@ export default {
             }
         },
         getData() {
-            GoodsManageApi.List().then(data => {
+            AfterSaleApi.List().then(data => {
                 this.list = data.list
             })
         },
@@ -109,12 +112,13 @@ export default {
             })
         },
         edit(res) {
-            this.dialogVisible = true
-            this.dialogName = '修改系统参数'
+            OrderApi.ReplacementGoods(res.orderGoodsId).then(data => {
+                this.getData()
+            })
         },
         remove(res) {
             console.log(res)
-            GoodsManageApi.Remove(res.id).then(data => {
+            AfterSaleApi.Remove(res.id).then(data => {
                 this.getData()
             })
         }
