@@ -7,7 +7,7 @@
             @select="handleSelect">
             <div class="logo-wrap">
                 <img class="logo" src="./image/logo.png">
-                <span class="title">商城后台管理系统</span>
+                <span class="title">后台管理系统</span>
                 <!-- <span  class="title titleItem"
                     v-for="(item, index) in menuList"
                     :key="index"

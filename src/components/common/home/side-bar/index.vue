@@ -127,6 +127,7 @@ export default {
                 display: block;
                 height: 100%;
                 overflow: auto;
+                z-index: 999;
                 border-right: 1px solid $con-border-color;
             }
             .el-menu-item{

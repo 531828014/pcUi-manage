@@ -23,10 +23,11 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                import: [
-                    path.join(__dirname, 'src/sass/variables.scss'),
-                    path.join(__dirname, 'src/sass/index.scss')
-                ]
+                // import: [
+                //     path.join(__dirname, 'src/sass/variables.scss'),
+                //     path.join(__dirname, 'src/sass/index.scss')
+                // ]
+                data: '@import "~@/sass/index.scss";'
             }
         },
     },
