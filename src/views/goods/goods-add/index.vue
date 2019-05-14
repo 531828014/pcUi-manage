@@ -66,12 +66,18 @@ export default {
                     component: 'el-input',
                     attrs: {
                         type: 'number' 
-                    } 
+                    },
                 },
                 {
-                    label: '类别:',
+                    label: '类别',
                     prop: 'category',
-                    component: 'el-input'   
+                    component: 'el-select',
+                    attrs: {
+                        placeholder: '请选择品类',
+                    },
+                    data: {
+                        options: [{label: '选项1', value: '1'}, {label: '选项2', value: '2'}]
+                    }
                 },
                 {
                     label: '厂家/设计师:',

@@ -14,8 +14,8 @@
                         :columns="columns"
                         :header-cell-class-name="headerClaaName">
                         <template slot="operation" slot-scope="{scope}">
-                            <el-button  @click="edit(scope.row)" type="primary" title="">退换货</el-button>
-                            <el-button  @click="remove(scope.row)" type="primary" title="">拒绝</el-button>
+                            <el-button v-if="scope.row.afterSaleMode == '申请退换货'" @click="edit(scope.row)" type="primary" title="">退换货</el-button>
+                            <el-button  v-if="scope.row.afterSaleMode == '申请退换货'" @click="remove(scope.row)" type="primary" title="">拒绝</el-button>
                         </template>
                     </mms-table>
                 </el-form>
@@ -31,7 +31,7 @@ import AfterSaleApi from 'api/main/after-sale/index'
 import OrderApi from 'api/main/order/index'
 const columns = [
     {
-        prop: 'orderGoodsId',
+        prop: 'id',
         label: '订单号',
         showOverflowTooltip: true
     },
@@ -63,6 +63,10 @@ const columns = [
     {
         prop: 'status',
         label: '订单状态'
+    },
+    {
+        prop: 'afterSaleMode',
+        label: '售后方式'
     },
     {
         label: '操作',
@@ -103,7 +107,7 @@ export default {
         },
         getData() {
             AfterSaleApi.List().then(data => {
-                this.list = data.list
+                this.list = data
             })
         },
         addGoods() {
@@ -112,14 +116,19 @@ export default {
             })
         },
         edit(res) {
-            OrderApi.ReplacementGoods(res.orderGoodsId).then(data => {
+            AfterSaleApi.Update(res.id).then(data => {
                 this.getData()
             })
         },
         remove(res) {
-            console.log(res)
-            AfterSaleApi.Remove(res.id).then(data => {
-                this.getData()
+            this.$confirm('是否删除该品类?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                AfterSaleApi.Remove(res.id).then(data => {
+                    this.getData()
+                })
             })
         }
     }
