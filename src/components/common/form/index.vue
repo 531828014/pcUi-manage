@@ -38,7 +38,6 @@ export default {
             }
 
             if(item.attrs) {
-                //console.log(item)
                 this.setNodeAttrs(node, item.attrs)
             }
             return (

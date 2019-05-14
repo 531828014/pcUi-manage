@@ -95,7 +95,6 @@ export default {
         },
         setheight() {
             let edit = window.innerHeight;
-            console.log(edit)
             let navScroll = document.getElementsByClassName('el-menu-vertical-demo')[0];
             navScroll.style.height = edit + 'px';
         },

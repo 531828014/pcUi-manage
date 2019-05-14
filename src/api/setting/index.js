@@ -56,7 +56,6 @@ axios.interceptors.response.use(res => {
         return Promise.reject(err)
     }
 }, err => {
-    console.log(err)
     requestError(err)
     return Promise.reject(err)
 })

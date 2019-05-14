@@ -44,9 +44,6 @@ export default {
             menuList: MenuList,
         };
     },
-    created() {
-        console.log(window.GlobalConfig)
-    },
     components: {
         sidebar
     },

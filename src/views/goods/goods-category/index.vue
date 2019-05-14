@@ -140,7 +140,6 @@ export default {
             })
         },
         addCategory() {
-            console.log(this.form)
             CategoryApi.Add(this.form).then(data => {
                 this.form = initCategory()
                 this.getData()

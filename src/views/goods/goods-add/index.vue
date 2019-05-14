@@ -6,6 +6,8 @@
             <el-form 
                 :model="form" 
                 class="mmsFrom"
+                ref="mmsFrom"
+                :rules="rules"
                 label-width="120px" >
                 <mms-form :items="items" :form-data="form">
                 </mms-form>
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import CategoryApi from 'api/main/category/index'
 import GoodsManageApi from 'api/main/goods-manage/index'
 import {initGoods} from 'model/goods'
 import {mapState} from 'vuex'
@@ -37,7 +40,27 @@ export default {
     data() {
         return {
             form: initGoods(),
-            items: [
+            fileList: [],
+            categoryList: [],
+            rules: {
+                title: [{ required: true, message: '请填写商品标题', trigger: 'blur' }],
+                purchasePrice: [{ required: true, message: '请填写进货价', trigger: 'blur' }],
+                sellingPrice: [{ required: true, message: '请填写销售价', trigger: 'blur' }],
+                number: [{ required: true, message: '请填写商品数量', trigger: 'blur' }],
+                category: [{ required: true, message: '请填写类别', trigger: 'blur' }]
+            }
+        };
+    },
+    created() {
+        this.getCategory()
+    },
+    components: {},
+    computed: {
+        ...mapState({
+            serverAddress: state => state.serverAddress,
+        }),
+        items() {
+            return [
                 {
                     label: '商品标题:',
                     prop: 'title',
@@ -76,7 +99,7 @@ export default {
                         placeholder: '请选择品类',
                     },
                     data: {
-                        options: [{label: '选项1', value: '1'}, {label: '选项2', value: '2'}]
+                        options: this.categoryList
                     }
                 },
                 {
@@ -92,24 +115,37 @@ export default {
                         type: 'textarea'
                     } 
                 },
-            ],
-            fileList: []
-        };
-    },
-
-    components: {},
-    computed: {
-        ...mapState({
-            serverAddress: state => state.serverAddress,
-        })
+            ]
+        }
     },
 
     methods: {
-        addGoods() {
-            GoodsManageApi.Add(this.form).then(data => {
-                this.form = initGoods()
-                this.fileList = []
+        getCategory() {
+            CategoryApi.List().then(date => {
+                date.list.forEach(item => {
+                    let opt = {
+                        value: item.id,
+                        label: item.name
+                    }
+                    this.categoryList.push(opt)
+                });
             })
+        },
+        addGoods() {
+            this.$refs['mmsFrom'].validate((valid) => {
+                if (valid) {
+                    if(this.form.imgUrl.length > 0) {
+                        GoodsManageApi.Add(this.form).then(data => {
+                            this.form = initGoods()
+                            this.fileList = []
+                        })
+                    }else{
+                        this.$message({type: 'warning', message: '请上传商品图片。'})
+                    }
+                } else {
+                    return false;
+                }
+            });
         },
         back() {
             this.$router.back()

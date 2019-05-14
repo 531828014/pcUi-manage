@@ -46,7 +46,6 @@ export function $ajax_post(config, loadingOptions) {
             if (loadingInstance) {
                 loadingInstance.close()
             }
-            console.log(err)
             reject()
         })
     })

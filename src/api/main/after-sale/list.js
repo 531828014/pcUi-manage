@@ -9,7 +9,6 @@ export default function() {
         }
         $ajax_fetch(option).then(data => {
             if (data) {
-                console.log(data)
                 let ret = data.data ? data.data.map(item => createOrder({
                     id: item.Id,
                     userId: item.userId,
@@ -21,7 +20,6 @@ export default function() {
                     total: item.total,
                     status: item.status,
                 })) : []
-                console.log(ret)
                 resolve(ret)
             }else {
                 reject(data.Msg)

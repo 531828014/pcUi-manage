@@ -291,7 +291,6 @@ export default {
             this.$refs.table.clearFilter(columnKey)
         },
         doLayout() {
-            console.log('111')
             this.$refs.table.doLayout()
         },
         sort(prop, order) {

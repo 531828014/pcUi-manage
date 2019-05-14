@@ -101,7 +101,6 @@ export default {
             }
         },
         getData() {
-            console.log(this.$store.state.userInfo)
             if(this.$store.state.userInfo.id) {
                 let opt = {
                     id: this.$store.state.userInfo.id

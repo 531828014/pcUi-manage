@@ -24,7 +24,6 @@ export default {
     },
     created() {
         let ret = document.getElementsByClassName('el-menu-vertical-demo')
-        console.log(ret)
     },
     computed: {
         setMenuList() {

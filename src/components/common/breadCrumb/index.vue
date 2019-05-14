@@ -20,7 +20,6 @@ export default {
         };
     },
     created() {
-        console.log(this.$route.matched)
     },
     computed: {
         setRoute() {
