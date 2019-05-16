@@ -15,7 +15,7 @@
                         :columns="columns"
                         :header-cell-class-name="headerClaaName">
                         <template slot="operation" slot-scope="{scope}">
-                            <el-button icon="el-icon-edit" circle @click="edit(scope.row)" type="primary" title="编辑"></el-button>
+                            <!-- <el-button icon="el-icon-edit" circle @click="edit(scope.row)" type="primary" title="编辑"></el-button> -->
                             <el-button icon="el-icon-delete" circle @click="remove(scope.row)" type="danger" title="删除"></el-button>
                         </template>
                     </mms-table>
