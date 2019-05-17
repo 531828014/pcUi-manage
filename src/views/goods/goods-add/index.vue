@@ -53,6 +53,10 @@ export default {
     },
     created() {
         this.getCategory()
+        if(this.$route.query.id) {
+            console.log(this.$route.query.id)
+            this.getData()
+        }
     },
     components: {},
     computed: {
@@ -120,6 +124,12 @@ export default {
     },
 
     methods: {
+        getData() {
+            GoodsManageApi.Detial(this.$route.query.id).then(date => {
+                // this.form = date
+                console.log(date)
+            })
+        },
         getCategory() {
             CategoryApi.List().then(date => {
                 date.list.forEach(item => {

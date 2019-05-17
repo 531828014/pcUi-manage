@@ -113,8 +113,12 @@ export default {
             })
         },
         edit(res) {
-            this.dialogVisible = true
-            this.dialogName = '修改系统参数'
+            this.$router.push({
+                path: '/home/goods/goods-edit',
+                query: {
+                    id: res.id
+                }
+            })
         },
         remove(res) {
             this.$confirm('是否删除该商品?', '提示', {

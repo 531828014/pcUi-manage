@@ -64,6 +64,11 @@ export default [
                         component: () => import('views/goods/goods-add/index')
                     },
                     {
+                        path: '/home/goods/goods-edit',
+                        name: '编辑商品',
+                        component: () => import('views/goods/goods-add/index')
+                    },
+                    {
                         path: '/home/goods/goods-stock',
                         name: '商品库存',
                         component: () => import('views/goods/goods-stock/index')
