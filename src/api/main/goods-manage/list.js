@@ -1,10 +1,13 @@
 import {$ajax_fetch} from 'api/setting/methods'
 import {createGoods} from 'model/goods'
 //
-export default function() {
+export default function(Id) {
     return new Promise ((resolve, reject) => {
         let option = {
             url: '/Commodity/List',
+            data: {
+                Id: Id,
+            }
         }
         $ajax_fetch(option).then(data => {
             if (data) {

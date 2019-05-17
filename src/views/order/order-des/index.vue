@@ -116,6 +116,9 @@ export default {
         },
         edit(res) {
             //发货
+            OrderApi.DeliverGoods(res).then(data => {
+                this.getData()
+            })
         },
         remove(res) {
             this.$confirm('是否取消该订单?', '提示', {

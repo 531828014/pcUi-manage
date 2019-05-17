@@ -12,7 +12,8 @@ export default function(from) {
                 category: from.category,
                 designer: from.designer,
                 imgUrl: from.imgUrl,
-                number: from.number
+                number: from.number,
+                typeId: from.typeId,
             }
         }
         $ajax_post(option).then(data => {

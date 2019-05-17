@@ -124,7 +124,7 @@ export default {
             CategoryApi.List().then(date => {
                 date.list.forEach(item => {
                     let opt = {
-                        value: item.id,
+                        value: item.category,
                         label: item.name
                     }
                     this.categoryList.push(opt)
@@ -132,6 +132,7 @@ export default {
             })
         },
         addGoods() {
+            this.form.typeId = this.$store.state.userInfo.id
             this.$refs['mmsFrom'].validate((valid) => {
                 if (valid) {
                     if(this.form.imgUrl.length > 0) {

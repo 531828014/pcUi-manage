@@ -106,9 +106,11 @@ export default {
             }
         },
         getData() {
-            AfterSaleApi.List().then(data => {
-                this.list = data
-            })
+            if(this.$store.state.userInfo.id) {
+                AfterSaleApi.List(this.$store.state.userInfo.id).then(data => {
+                    this.list = data
+                })
+            }
         },
         addGoods() {
             this.$router.push({

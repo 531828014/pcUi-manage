@@ -100,9 +100,12 @@ export default {
             }
         },
         getData() {
-            GoodsManageApi.List().then(data => {
-                this.list = data.list
-            })
+            if(this.$store.state.userInfo.id) {
+                GoodsManageApi.List(this.$store.state.userInfo.id).then(data => {
+                    this.list = data.list
+                })
+            }
+            
         },
         addGoods() {
             this.$router.push({
