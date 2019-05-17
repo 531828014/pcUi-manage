@@ -108,6 +108,7 @@ export default {
         getData() {
             if(this.$store.state.userInfo.id) {
                 AfterSaleApi.List(this.$store.state.userInfo.id).then(data => {
+                    console.log(data)
                     this.list = data
                 })
             }

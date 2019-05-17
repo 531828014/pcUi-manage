@@ -48,10 +48,12 @@
 
 <script>
 import menuList from 'router/menu'
+import desMenu from 'router/desMenu'
 export default {
     data() {
         return {
             menuList: menuList,
+            desMenu: desMenu,
             isCollapse: false
         };
     },
@@ -63,8 +65,12 @@ export default {
     },
     computed: {
         setMenuList() {
-            this.$store.state.menuIndex
-            return this.menuList
+            switch(this.$store.state.userInfo.id) {
+                case '10000': return this.menuList; break;
+                default: return this.desMenu; break;
+            }
+            // this.$store.state.menuIndex
+            // return this.menuList
         },
         activeMenu() {
             if (this.$route.meta.active) {
