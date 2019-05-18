@@ -27,6 +27,7 @@ export default function(Id) {
                         }
                     }) : []
                 })) : []
+                console.log(ret)
                 resolve(ret)
             }else {
                 reject(data.Msg)

@@ -25,7 +25,7 @@ export default function(Id) {
                     typeId: table.typeId,
                     imgUrl: table.imgList ? table.imgList.map(url => {
                         return{
-                            url: 'http://localhost:5699/' + url
+                            url: window.GlobalConfig.baseUrl + '/' + url
                         }
                     }) : []
                 }
