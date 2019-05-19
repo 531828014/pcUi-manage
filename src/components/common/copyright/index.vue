@@ -1,7 +1,7 @@
 <!--  -->
 <template>
     <div class="copyright">
-        Copyright <span v-html="copy"></span> {{year}} XXXXXXXXXXXXXXXXXXX
+        Copyright <span v-html="copy"></span> {{year}} 南宁师范大学计算机与信息工程学院 软件工程 2015级 杨礼锦
     </div>
 </template>
 
