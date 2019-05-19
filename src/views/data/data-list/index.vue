@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import CategoryApi from 'api/main/category/index'
+import { Promise } from 'q';
 export default {
     data() {
       this.chartExtend = {
@@ -43,26 +45,32 @@ export default {
               ]
           },
           chartData: {
-            columns: ['日期', '访问用户'],
-            rows: [
-                { '日期': '1/1', '访问用户': 1393 },
-                { '日期': '1/2', '访问用户': 3530 },
-                { '日期': '1/3', '访问用户': 2923 },
-                { '日期': '1/4', '访问用户': 1723 },
-                { '日期': '1/5', '访问用户': 3792 },
-                { '日期': '1/6', '访问用户': 4593 }
-              ]
+            columns: ['品类', '商品数'],
+            rows: []
           }
         };
     },
 
-    components: {},
+    created() {
+      this.getdata()
+    },
 
-    computed: {},
-
-    methods: {}
+    methods: {
+      getdata() {
+        Promise.all([CategoryApi.CategoryData(), CategoryApi.List()]).then(data => {
+          console.log(data)
+          data[0].list.forEach(item => {
+            data[1].list.forEach(it => {
+              if(item.category == it.category){
+                let opt = { '品类': it.name, '商品数': item.number }
+                this.chartData.rows.push(opt)
+              }
+            })
+          })
+        })
+      }
+    }
 }
-
 </script>
 <style lang='scss' scoped>
 </style>
